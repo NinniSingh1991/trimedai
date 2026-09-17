@@ -1,0 +1,1678 @@
+{
+ "crisis penalty": {
+  "parameter": "CRISIS_PENALTY",
+  "values": [
+   1.0,
+   1.75,
+   2.5,
+   3.5,
+   5.0
+  ],
+  "results": [
+   {
+    "value": 1.0,
+    "CNN": {
+     "reward": 0.19782178781249998,
+     "pct_oracle": 83.74552056750106,
+     "normalised": 84.40411388690613,
+     "normalised_sd": 1.232897167250088,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 75.73805169621743,
+     "normalised": 76.7086521474092,
+     "normalised_sd": 0.9233616298399643,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17621408343749997,
+     "pct_oracle": 74.59815378266451,
+     "normalised": 75.67725670779114,
+     "normalised_sd": 4.25027088303521,
+     "crisis": 4.757499999999999
+    },
+    "QMDP": {
+     "reward": 0.23152525124999998,
+     "pct_oracle": 98.01348428227861,
+     "normalised": 98.08403728800162,
+     "normalised_sd": 1.184479584968825,
+     "crisis": 2.62
+    },
+    "TriMedAI": {
+     "reward": 0.231129698125,
+     "pct_oracle": 97.84603153234886,
+     "normalised": 97.92467475693014,
+     "normalised_sd": 1.1074528636212893,
+     "crisis": 4.1875
+    },
+    "Random": {
+     "reward": -0.009917086562500003,
+     "pct_oracle": -4.19828162445236,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.23621775406249998,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.8600000000000003
+    },
+    "_floor_reward": -0.009917086562500003
+   },
+   {
+    "value": 1.75,
+    "CNN": {
+     "reward": 0.15629053781250002,
+     "pct_oracle": 68.56524079251197,
+     "normalised": 71.69923612790133,
+     "normalised_sd": 1.7918408901149512,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 78.48704617239466,
+     "normalised": 80.63054762871218,
+     "normalised_sd": 0.5899823682509274,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1749371025,
+     "pct_oracle": 76.74555814022881,
+     "normalised": 79.12682331588687,
+     "normalised_sd": 4.598014542774822,
+     "crisis": 0.75
+    },
+    "QMDP": {
+     "reward": 0.2233533015625,
+     "pct_oracle": 97.98592491765376,
+     "normalised": 98.18375829458694,
+     "normalised_sd": 1.2283665648094344,
+     "crisis": 0.495
+    },
+    "TriMedAI": {
+     "reward": 0.22029936625,
+     "pct_oracle": 96.64615212656179,
+     "normalised": 96.97693182687968,
+     "normalised_sd": 1.1260708731963665,
+     "crisis": 1.29
+    },
+    "Random": {
+     "reward": -0.025292086562500003,
+     "pct_oracle": -11.095732534898042,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.2279442703125,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.53
+    },
+    "_floor_reward": -0.025292086562500003
+   },
+   {
+    "value": 2.5,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21978784187499997,
+     "pct_oracle": 97.66452927087218,
+     "normalised": 98.03278333402474,
+     "normalised_sd": 1.3679199686219365,
+     "crisis": 0.49749999999999994
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 3.5,
+    "CNN": {
+     "reward": 0.05938428781249999,
+     "pct_oracle": 26.596553469298758,
+     "normalised": 42.34701001374225,
+     "normalised_sd": 3.415821073928338,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 80.1272936739104,
+     "normalised": 84.40307839586566,
+     "normalised_sd": 0.983181548281354,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.16634660687499997,
+     "pct_oracle": 74.50196991764012,
+     "normalised": 80.11449054611299,
+     "normalised_sd": 4.823008434660423,
+     "crisis": 0.24749999999999997
+    },
+    "QMDP": {
+     "reward": 0.21755507093749998,
+     "pct_oracle": 97.43680171724385,
+     "normalised": 97.99922011395896,
+     "normalised_sd": 1.797136760145697,
+     "crisis": 0.12
+    },
+    "TriMedAI": {
+     "reward": 0.21760524781249996,
+     "pct_oracle": 97.45927452929597,
+     "normalised": 98.01866714011194,
+     "normalised_sd": 1.796251171012724,
+     "crisis": 0.22000000000000003
+    },
+    "Random": {
+     "reward": -0.06116708656250001,
+     "pct_oracle": -27.395018922468573,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22327813218749998,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.15749999999999997
+    },
+    "_floor_reward": -0.06116708656250001
+   },
+   {
+    "value": 5.0,
+    "CNN": {
+     "reward": -0.023678212187500023,
+     "pct_oracle": -10.657610728770882,
+     "normalised": 21.64388822733596,
+     "normalised_sd": 4.6664250364694,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 80.52627509966038,
+     "normalised": 86.21881854710952,
+     "normalised_sd": 0.6662190220056863,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.160874624375,
+     "pct_oracle": 72.40999063396809,
+     "normalised": 80.53824818682342,
+     "normalised_sd": 5.06890554332705,
+     "crisis": 0.16999999999999998
+    },
+    "QMDP": {
+     "reward": 0.2158878271875,
+     "pct_oracle": 97.17154340137117,
+     "normalised": 98.00442364554078,
+     "normalised_sd": 1.2320695003309736,
+     "crisis": 0.065
+    },
+    "TriMedAI": {
+     "reward": 0.21539736593749997,
+     "pct_oracle": 96.95078581044095,
+     "normalised": 97.85032425818699,
+     "normalised_sd": 1.7848223239921384,
+     "crisis": 0.125
+    },
+    "Random": {
+     "reward": -0.0919170865625,
+     "pct_oracle": -41.37206475508365,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.222171861875,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.065
+    },
+    "_floor_reward": -0.0919170865625
+   }
+  ]
+ },
+ "caregiver call-out cost": {
+  "parameter": "ESCALATION_COST",
+  "values": [
+   0.3,
+   0.45,
+   0.6,
+   0.85,
+   1.2
+  ],
+  "results": [
+   {
+    "value": 0.3,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 45.49844568231279,
+     "normalised": 43.30042899371896,
+     "normalised_sd": 2.952682414191924,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.2090792246875,
+     "pct_oracle": 82.89333202630877,
+     "normalised": 82.21168040198577,
+     "normalised_sd": 0.9994633067192683,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1984453725,
+     "pct_oracle": 78.67734432396949,
+     "normalised": 77.86616483732476,
+     "normalised_sd": 5.107580981812506,
+     "crisis": 0.16749999999999998
+    },
+    "QMDP": {
+     "reward": 0.2466921846875,
+     "pct_oracle": 97.8056868355079,
+     "normalised": 97.72467494828405,
+     "normalised_sd": 1.1685972222447387,
+     "crisis": 0.125
+    },
+    "TriMedAI": {
+     "reward": 0.24637998499999997,
+     "pct_oracle": 97.68190948559125,
+     "normalised": 97.59376103386467,
+     "normalised_sd": 1.2261409457179058,
+     "crisis": 0.1975
+    },
+    "Random": {
+     "reward": 0.009687913437499994,
+     "pct_oracle": 3.840952760452996,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.25222683125,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.1525
+    },
+    "_floor_reward": 0.009687913437499994
+   },
+   {
+    "value": 0.45,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 48.22413873409377,
+     "normalised": 51.37019433675647,
+     "normalised_sd": 2.704800769074925,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.19399297468749999,
+     "pct_oracle": 81.51971228729205,
+     "normalised": 82.64993915865038,
+     "normalised_sd": 0.8363577584037913,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1846894409375,
+     "pct_oracle": 77.61018207993872,
+     "normalised": 79.05428598898935,
+     "normalised_sd": 5.425076881236424,
+     "crisis": 0.21999999999999997
+    },
+    "QMDP": {
+     "reward": 0.2321020190625,
+     "pct_oracle": 97.53389186259923,
+     "normalised": 97.69417495945763,
+     "normalised_sd": 1.617555735979833,
+     "crisis": 0.1775
+    },
+    "TriMedAI": {
+     "reward": 0.23226975687499998,
+     "pct_oracle": 97.60437863273472,
+     "normalised": 97.76747314384349,
+     "normalised_sd": 1.590633927518698,
+     "crisis": 0.34
+    },
+    "Random": {
+     "reward": -0.015489586562500013,
+     "pct_oracle": -6.509032824813264,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.23797063218749998,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 4.736951571734001e-15,
+     "crisis": 0.15749999999999997
+    },
+    "_floor_reward": -0.015489586562500013
+   },
+   {
+    "value": 0.6,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21978784187499997,
+     "pct_oracle": 97.66452927087218,
+     "normalised": 98.03278333402474,
+     "normalised_sd": 1.3679199686219365,
+     "crisis": 0.49749999999999994
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 0.85,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 56.07725277722375,
+     "normalised": 68.69494041055331,
+     "normalised_sd": 2.157421032736278,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1537629746875,
+     "pct_oracle": 75.13644746050427,
+     "normalised": 82.28109122462774,
+     "normalised_sd": 0.8716720960068587,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1395334025,
+     "pct_oracle": 68.18315129005458,
+     "normalised": 77.39883510935788,
+     "normalised_sd": 5.613510273975901,
+     "crisis": 0.8800000000000001
+    },
+    "QMDP": {
+     "reward": 0.20009990812499998,
+     "pct_oracle": 97.77904117842246,
+     "normalised": 98.41118760999848,
+     "normalised_sd": 1.481182793728017,
+     "crisis": 0.495
+    },
+    "TriMedAI": {
+     "reward": 0.1974405403125,
+     "pct_oracle": 96.47953815873807,
+     "normalised": 97.47867422963904,
+     "normalised_sd": 1.2735449510414532,
+     "crisis": 0.9675
+    },
+    "Random": {
+     "reward": -0.08262958656250001,
+     "pct_oracle": -40.37703876407371,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.20464498906249995,
+     "pct_oracle": 99.99999999999999,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.4875
+    },
+    "_floor_reward": -0.08262958656250001
+   },
+   {
+    "value": 1.2,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 64.84675996881074,
+     "normalised": 80.45126239638371,
+     "normalised_sd": 1.9822484072524005,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1185617246875,
+     "pct_oracle": 66.99539400122605,
+     "normalised": 81.64288418872525,
+     "normalised_sd": 1.3172326248142878,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.10976897593749999,
+     "pct_oracle": 62.026896213152405,
+     "normalised": 78.90918275244016,
+     "normalised_sd": 4.131959823096501,
+     "crisis": 1.2325
+    },
+    "QMDP": {
+     "reward": 0.17359208406249999,
+     "pct_oracle": 98.09126931912184,
+     "normalised": 98.9261419986677,
+     "normalised_sd": 1.4599448783432802,
+     "crisis": 0.7150000000000001
+    },
+    "TriMedAI": {
+     "reward": 0.168125683125,
+     "pct_oracle": 95.00238304033533,
+     "normalised": 97.2070490061606,
+     "normalised_sd": 1.7058915302687176,
+     "crisis": 2.5475
+    },
+    "Random": {
+     "reward": -0.14137708656250003,
+     "pct_oracle": -79.88761669893897,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.17696996406249998,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 4.736951571734001e-15,
+     "crisis": 0.9349999999999999
+    },
+    "_floor_reward": -0.14137708656250003
+   }
+  ]
+ },
+ "relief from a supported context": {
+  "parameter": "RECOVER",
+  "values": [
+   0.02,
+   0.05,
+   0.1,
+   0.2,
+   0.35
+  ],
+  "results": [
+   {
+    "value": 0.02,
+    "CNN": {
+     "reward": 0.10675928781249996,
+     "pct_oracle": 48.450179008829544,
+     "normalised": 56.65386160924278,
+     "normalised_sd": 2.779221491955508,
+     "crisis": 5.8575
+    },
+    "NEWS2": {
+     "reward": 0.17608763781249998,
+     "pct_oracle": 79.91321175016918,
+     "normalised": 83.11861361541318,
+     "normalised_sd": 1.0885278593766732,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1662480684375,
+     "pct_oracle": 75.44775579446987,
+     "normalised": 79.43275140848452,
+     "normalised_sd": 5.1589892734967355,
+     "crisis": 0.24499999999999997
+    },
+    "QMDP": {
+     "reward": 0.21527589031249997,
+     "pct_oracle": 97.69787374606818,
+     "normalised": 98.06938325864927,
+     "normalised_sd": 1.758734223180308,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21486019281250002,
+     "pct_oracle": 97.50921926268596,
+     "normalised": 97.90795368713995,
+     "normalised_sd": 1.435589958302188,
+     "crisis": 0.55
+    },
+    "Random": {
+     "reward": -0.041917086562500004,
+     "pct_oracle": -19.023078826158493,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.1
+    },
+    "Oracle": {
+     "reward": 0.220348593125,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.1875
+    },
+    "_floor_reward": -0.041917086562500004
+   },
+   {
+    "value": 0.05,
+    "CNN": {
+     "reward": 0.10913428781249998,
+     "pct_oracle": 49.092611620712475,
+     "normalised": 57.04894417375281,
+     "normalised_sd": 2.617992004961968,
+     "crisis": 5.7625
+    },
+    "NEWS2": {
+     "reward": 0.17710350125000002,
+     "pct_oracle": 79.66766062076022,
+     "normalised": 82.85355229809574,
+     "normalised_sd": 0.9920236790545715,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1687674496875,
+     "pct_oracle": 75.91779840961769,
+     "normalised": 79.76270952513444,
+     "normalised_sd": 4.722645699123694,
+     "crisis": 0.295
+    },
+    "QMDP": {
+     "reward": 0.21683240656249997,
+     "pct_oracle": 97.53918164056594,
+     "normalised": 97.93338792696707,
+     "normalised_sd": 1.7089137395812912,
+     "crisis": 0.26000000000000006
+    },
+    "TriMedAI": {
+     "reward": 0.216355000625,
+     "pct_oracle": 97.32442691274498,
+     "normalised": 97.74890285194498,
+     "normalised_sd": 1.637497941627429,
+     "crisis": 0.53
+    },
+    "Random": {
+     "reward": -0.041354586562500004,
+     "pct_oracle": -18.602812164184137,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.0774999999999997
+    },
+    "Oracle": {
+     "reward": 0.2223028765625,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.17250000000000001
+    },
+    "_floor_reward": -0.041354586562500004
+   },
+   {
+    "value": 0.1,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21978784187499997,
+     "pct_oracle": 97.66452927087218,
+     "normalised": 98.03278333402474,
+     "normalised_sd": 1.3679199686219365,
+     "crisis": 0.49749999999999994
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 0.2,
+    "CNN": {
+     "reward": 0.12544678781249996,
+     "pct_oracle": 54.68729023360823,
+     "normalised": 61.255722271445016,
+     "normalised_sd": 2.3397423761836915,
+     "crisis": 5.11
+    },
+    "NEWS2": {
+     "reward": 0.18268920875,
+     "pct_oracle": 79.64155922742546,
+     "normalised": 82.60125304249979,
+     "normalised_sd": 0.6642793281881335,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17029270593749998,
+     "pct_oracle": 74.23742605661678,
+     "normalised": 78.01644504138281,
+     "normalised_sd": 5.693658533795981,
+     "crisis": 0.4625
+    },
+    "QMDP": {
+     "reward": 0.22414214749999997,
+     "pct_oracle": 97.71255914689368,
+     "normalised": 98.03893489690658,
+     "normalised_sd": 1.5058155926741326,
+     "crisis": 0.24749999999999997
+    },
+    "TriMedAI": {
+     "reward": 0.22454256718749996,
+     "pct_oracle": 97.88711816149589,
+     "normalised": 98.19608637340542,
+     "normalised_sd": 1.206960480346855,
+     "crisis": 0.4875
+    },
+    "Random": {
+     "reward": -0.03904208656250001,
+     "pct_oracle": -17.02001267948245,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.985
+    },
+    "Oracle": {
+     "reward": 0.229389291875,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.2325
+    },
+    "_floor_reward": -0.03904208656250001
+   },
+   {
+    "value": 0.35,
+    "CNN": {
+     "reward": 0.1398842878125,
+     "pct_oracle": 59.11906788838578,
+     "normalised": 64.61621252842131,
+     "normalised_sd": 2.427693607315413,
+     "crisis": 4.532500000000001
+    },
+    "NEWS2": {
+     "reward": 0.1870878684375,
+     "pct_oracle": 79.06864000391037,
+     "normalised": 81.89996443818606,
+     "normalised_sd": 0.8227792174102521,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17875731093749997,
+     "pct_oracle": 75.54791010570523,
+     "normalised": 78.89672525477712,
+     "normalised_sd": 3.25426999723579,
+     "crisis": 0.255
+    },
+    "QMDP": {
+     "reward": 0.2313555578125,
+     "pct_oracle": 97.77742119976917,
+     "normalised": 98.08095523027139,
+     "normalised_sd": 1.4287691446085329,
+     "crisis": 0.215
+    },
+    "TriMedAI": {
+     "reward": 0.2298703959375,
+     "pct_oracle": 97.14974966434228,
+     "normalised": 97.53758475856144,
+     "normalised_sd": 1.4737899703208872,
+     "crisis": 0.5325
+    },
+    "Random": {
+     "reward": -0.0369170865625,
+     "pct_oracle": -15.602207945293083,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.8999999999999997
+    },
+    "Oracle": {
+     "reward": 0.2366145015625,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.205
+    },
+    "_floor_reward": -0.0369170865625
+   }
+  ]
+ },
+ "urgency scale": {
+  "parameter": "urgency_scale",
+  "values": [
+   0.5,
+   0.75,
+   1.0,
+   1.3,
+   1.6
+  ],
+  "results": [
+   {
+    "value": 0.5,
+    "CNN": {
+     "reward": 0.20032178781249996,
+     "pct_oracle": 76.26672572062935,
+     "normalised": 76.24167789592362,
+     "normalised_sd": 2.1237800992177056,
+     "crisis": 2.1149999999999998
+    },
+    "NEWS2": {
+     "reward": 0.21911484499999995,
+     "pct_oracle": 83.42163859167815,
+     "normalised": 83.40625215629252,
+     "normalised_sd": 0.39248256803482556,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.2112140921875,
+     "pct_oracle": 80.4136555144633,
+     "normalised": 80.39606365023351,
+     "normalised_sd": 4.302037890701941,
+     "crisis": 0.15000000000000002
+    },
+    "QMDP": {
+     "reward": 0.25301435375,
+     "pct_oracle": 96.32789588966239,
+     "normalised": 96.32036016636033,
+     "normalised_sd": 1.3797373635890955,
+     "crisis": 0.16749999999999998
+    },
+    "TriMedAI": {
+     "reward": 0.25810758687499996,
+     "pct_oracle": 98.26699706291659,
+     "normalised": 98.27087851256113,
+     "normalised_sd": 1.0194021587981235,
+     "crisis": 0.18250000000000002
+    },
+    "Random": {
+     "reward": 0.000270413437499996,
+     "pct_oracle": 0.10295209369980395,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.4125
+    },
+    "Oracle": {
+     "reward": 0.26265948343749995,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.12
+    },
+    "_floor_reward": 0.000270413437499996
+   },
+   {
+    "value": 0.75,
+    "CNN": {
+     "reward": 0.1591342878125,
+     "pct_oracle": 65.11747955229717,
+     "normalised": 67.34510086958471,
+     "normalised_sd": 2.4467629106326285,
+     "crisis": 3.7625
+    },
+    "NEWS2": {
+     "reward": 0.198814705625,
+     "pct_oracle": 81.35463894170886,
+     "normalised": 82.55791629351434,
+     "normalised_sd": 0.5515645093577277,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.19115446812499998,
+     "pct_oracle": 78.22008280280987,
+     "normalised": 79.66070849921832,
+     "normalised_sd": 3.7098305327213503,
+     "crisis": 0.325
+    },
+    "QMDP": {
+     "reward": 0.23768180125000002,
+     "pct_oracle": 97.25898827715933,
+     "normalised": 97.44413238811823,
+     "normalised_sd": 1.1527766464227365,
+     "crisis": 0.17250000000000001
+    },
+    "TriMedAI": {
+     "reward": 0.23941733437499996,
+     "pct_oracle": 97.96916547613405,
+     "normalised": 98.10941811865919,
+     "normalised_sd": 0.9789807844721633,
+     "crisis": 0.29999999999999993
+    },
+    "Random": {
+     "reward": -0.016729586562500006,
+     "pct_oracle": -6.845718329324173,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.0925
+    },
+    "Oracle": {
+     "reward": 0.24438029374999998,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.195
+    },
+    "_floor_reward": -0.016729586562500006
+   },
+   {
+    "value": 1.0,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21978784187499997,
+     "pct_oracle": 97.66452927087218,
+     "normalised": 98.03278333402474,
+     "normalised_sd": 1.3679199686219365,
+     "crisis": 0.49749999999999994
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 1.3,
+    "CNN": {
+     "reward": 0.07257178781249998,
+     "pct_oracle": 34.87639680790312,
+     "normalised": 50.64721066822647,
+     "normalised_sd": 2.424721350174932,
+     "crisis": 7.225
+    },
+    "NEWS2": {
+     "reward": 0.16140944531249998,
+     "pct_oracle": 77.56981098228734,
+     "normalised": 83.01241420839366,
+     "normalised_sd": 0.6934651147099843,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.153984086875,
+     "pct_oracle": 74.0013478768138,
+     "normalised": 80.33802242820289,
+     "normalised_sd": 2.558204354191273,
+     "crisis": 0.355
+    },
+    "QMDP": {
+     "reward": 0.19931564937499996,
+     "pct_oracle": 95.78669462556707,
+     "normalised": 96.80924516868426,
+     "normalised_sd": 1.450953084284882,
+     "crisis": 0.185
+    },
+    "TriMedAI": {
+     "reward": 0.2011142440625,
+     "pct_oracle": 96.65105946910526,
+     "normalised": 97.46456536434953,
+     "normalised_sd": 0.9719733441894123,
+     "crisis": 0.695
+    },
+    "Random": {
+     "reward": -0.0666670865625,
+     "pct_oracle": -32.03872792810118,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 3.0900000000000003
+    },
+    "Oracle": {
+     "reward": 0.20808281374999998,
+     "pct_oracle": 100.00000000000001,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.3075
+    },
+    "_floor_reward": -0.0666670865625
+   },
+   {
+    "value": 1.6,
+    "CNN": {
+     "reward": 0.052259287812499985,
+     "pct_oracle": 26.11079007989738,
+     "normalised": 47.40153160445531,
+     "normalised_sd": 2.6099891794999555,
+     "crisis": 8.037499999999998
+    },
+    "NEWS2": {
+     "reward": 0.15349974031249997,
+     "pct_oracle": 76.69449134092041,
+     "normalised": 83.42076218298655,
+     "normalised_sd": 0.4927026365660562,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.14952827937500002,
+     "pct_oracle": 74.71019367460646,
+     "normalised": 82.04118471274663,
+     "normalised_sd": 4.38787717774122,
+     "crisis": 0.1425
+    },
+    "QMDP": {
+     "reward": 0.18866255031249998,
+     "pct_oracle": 94.26321049039394,
+     "normalised": 95.91093097907553,
+     "normalised_sd": 1.2168622801568287,
+     "crisis": 0.155
+    },
+    "TriMedAI": {
+     "reward": 0.1886011953125,
+     "pct_oracle": 94.2325551257227,
+     "normalised": 95.8837703334099,
+     "normalised_sd": 1.0881879035529007,
+     "crisis": 0.96
+    },
+    "Random": {
+     "reward": -0.08122958656250001,
+     "pct_oracle": -40.585487705459556,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 3.6725000000000003
+    },
+    "Oracle": {
+     "reward": 0.2001444140625,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.1825
+    },
+    "_floor_reward": -0.08122958656250001
+   }
+  ]
+ },
+ "frailty spread": {
+  "parameter": "frailty_spread",
+  "values": [
+   0.0,
+   0.5,
+   1.0,
+   1.5,
+   2.0
+  ],
+  "results": [
+   {
+    "value": 0.0,
+    "CNN": {
+     "reward": 0.11475928781249997,
+     "pct_oracle": 50.947258746691475,
+     "normalised": 57.368614097997614,
+     "normalised_sd": 1.891904878391936,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.178136573125,
+     "pct_oracle": 79.08353438090751,
+     "normalised": 81.83790153484223,
+     "normalised_sd": 0.6944405368986677,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17272560812499999,
+     "pct_oracle": 76.68134246094105,
+     "normalised": 79.77446169180416,
+     "normalised_sd": 3.8354975733712937,
+     "crisis": 0.25
+    },
+    "QMDP": {
+     "reward": 0.21610377749999996,
+     "pct_oracle": 95.93903272054555,
+     "normalised": 96.47677445588117,
+     "normalised_sd": 1.380364014750288,
+     "crisis": 0.2975
+    },
+    "TriMedAI": {
+     "reward": 0.22264856312499998,
+     "pct_oracle": 98.84458305145466,
+     "normalised": 99.01179813528537,
+     "normalised_sd": 1.2595802915395156,
+     "crisis": 0.31249999999999994
+    },
+    "Random": {
+     "reward": -0.034042086562500004,
+     "pct_oracle": -15.112946633222702,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.7849999999999997
+    },
+    "Oracle": {
+     "reward": 0.22525115312500002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.35750000000000004
+    },
+    "_floor_reward": -0.034042086562500004
+   },
+   {
+    "value": 0.5,
+    "CNN": {
+     "reward": 0.11269678781249999,
+     "pct_oracle": 49.894605847555475,
+     "normalised": 56.85208251037845,
+     "normalised_sd": 2.2976411370023233,
+     "crisis": 5.62
+    },
+    "NEWS2": {
+     "reward": 0.17814624,
+     "pct_oracle": 78.87124913278258,
+     "normalised": 81.81812626524804,
+     "normalised_sd": 0.7450516784069842,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.16955655249999996,
+     "pct_oracle": 75.06830957713856,
+     "normalised": 78.51972945205202,
+     "normalised_sd": 3.909202485008905,
+     "crisis": 0.3825
+    },
+    "QMDP": {
+     "reward": 0.21777641374999995,
+     "pct_oracle": 96.41684149000385,
+     "normalised": 96.920236031401,
+     "normalised_sd": 1.7857303519699477,
+     "crisis": 0.35000000000000003
+    },
+    "TriMedAI": {
+     "reward": 0.22084325374999997,
+     "pct_oracle": 97.77463327775295,
+     "normalised": 98.09963714841325,
+     "normalised_sd": 1.5276818095437843,
+     "crisis": 0.4175000000000001
+    },
+    "Random": {
+     "reward": -0.036604586562500006,
+     "pct_oracle": -16.206064557823076,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.8875
+    },
+    "Oracle": {
+     "reward": 0.2258696825,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.29
+    },
+    "_floor_reward": -0.036604586562500006
+   },
+   {
+    "value": 1.0,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21978784187499997,
+     "pct_oracle": 97.66452927087218,
+     "normalised": 98.03278333402474,
+     "normalised_sd": 1.3679199686219365,
+     "crisis": 0.49749999999999994
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 1.5,
+    "CNN": {
+     "reward": 0.1185717878125,
+     "pct_oracle": 52.209810222711205,
+     "normalised": 59.172342483712455,
+     "normalised_sd": 2.929422734752634,
+     "crisis": 5.385
+    },
+    "NEWS2": {
+     "reward": 0.18214666531249996,
+     "pct_oracle": 80.20325074041581,
+     "normalised": 83.09935311803771,
+     "normalised_sd": 0.9202825872783311,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.1645253540625,
+     "pct_oracle": 72.44419326805445,
+     "normalised": 76.54887336729237,
+     "normalised_sd": 6.851424741419432,
+     "crisis": 0.3075
+    },
+    "QMDP": {
+     "reward": 0.222408453125,
+     "pct_oracle": 97.93141643394254,
+     "normalised": 98.23098851729182,
+     "normalised_sd": 1.278369083121432,
+     "crisis": 0.19249999999999998
+    },
+    "TriMedAI": {
+     "reward": 0.2215499775,
+     "pct_oracle": 97.55341041506604,
+     "normalised": 97.91254029429102,
+     "normalised_sd": 1.4070815602582967,
+     "crisis": 0.5499999999999999
+    },
+    "Random": {
+     "reward": -0.03897958656250001,
+     "pct_oracle": -17.163583804657154,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.9825
+    },
+    "Oracle": {
+     "reward": 0.22710633749999998,
+     "pct_oracle": 100.00000000000001,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.1625
+    },
+    "_floor_reward": -0.03897958656250001
+   },
+   {
+    "value": 2.0,
+    "CNN": {
+     "reward": 0.12663428781249997,
+     "pct_oracle": 55.24439583778894,
+     "normalised": 61.635517146091715,
+     "normalised_sd": 3.051806807100228,
+     "crisis": 5.0625
+    },
+    "NEWS2": {
+     "reward": 0.1863102725,
+     "pct_oracle": 81.27813264821276,
+     "normalised": 83.96656362046346,
+     "normalised_sd": 1.191997349889728,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17360620656249998,
+     "pct_oracle": 75.735965044761,
+     "normalised": 79.29444755755645,
+     "normalised_sd": 3.482871919473193,
+     "crisis": 0.3125
+    },
+    "QMDP": {
+     "reward": 0.22574533218749998,
+     "pct_oracle": 98.48173591314175,
+     "normalised": 98.6994953713744,
+     "normalised_sd": 1.6978053543752158,
+     "crisis": 0.1975
+    },
+    "TriMedAI": {
+     "reward": 0.22431264562499997,
+     "pct_oracle": 97.85672427579262,
+     "normalised": 98.1621799205786,
+     "normalised_sd": 1.6504008629880058,
+     "crisis": 0.5950000000000001
+    },
+    "Random": {
+     "reward": -0.03841708656250001,
+     "pct_oracle": -16.75951097964685,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 1.9599999999999997
+    },
+    "Oracle": {
+     "reward": 0.22922558187499997,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.205
+    },
+    "_floor_reward": -0.03841708656250001
+   }
+  ]
+ },
+ "discount factor": {
+  "parameter": "GAMMA",
+  "values": [
+   0.7,
+   0.8,
+   0.9,
+   0.95,
+   0.98
+  ],
+  "results": [
+   {
+    "value": 0.7,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.197376223125,
+     "pct_oracle": 87.70574275773171,
+     "normalised": 89.59184434912066,
+     "normalised_sd": 1.6320137210139836,
+     "crisis": 2.2700000000000005
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 0.8,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.211790644375,
+     "pct_oracle": 94.11090900388808,
+     "normalised": 95.00732225035804,
+     "normalised_sd": 1.6586051487856663,
+     "crisis": 1.15
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 0.9,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.21978784187499997,
+     "pct_oracle": 97.66452927087218,
+     "normalised": 98.03278333402474,
+     "normalised_sd": 1.3679199686219365,
+     "crisis": 0.49749999999999994
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 0.95,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.22019175624999998,
+     "pct_oracle": 97.84401193453357,
+     "normalised": 98.18196303621079,
+     "normalised_sd": 1.470695774357645,
+     "crisis": 0.35
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   },
+   {
+    "value": 0.98,
+    "CNN": {
+     "reward": 0.1147592878125,
+     "pct_oracle": 50.994230290693835,
+     "normalised": 58.47934707983438,
+     "normalised_sd": 2.518119350076464,
+     "crisis": 5.5375
+    },
+    "NEWS2": {
+     "reward": 0.1789067246875,
+     "pct_oracle": 79.49866972139226,
+     "normalised": 82.63486043105706,
+     "normalised_sd": 0.7659967226283638,
+     "crisis": 0.0
+    },
+    "RLHF": {
+     "reward": 0.17180250718749995,
+     "pct_oracle": 76.34185243770467,
+     "normalised": 80.0546851420649,
+     "normalised_sd": 5.711347370901922,
+     "crisis": 0.32
+    },
+    "QMDP": {
+     "reward": 0.2192628553125,
+     "pct_oracle": 97.43124718819332,
+     "normalised": 97.83187469650807,
+     "normalised_sd": 1.8657518141898115,
+     "crisis": 0.26
+    },
+    "TriMedAI": {
+     "reward": 0.22010906437499997,
+     "pct_oracle": 97.80726712200206,
+     "normalised": 98.15492531137812,
+     "normalised_sd": 1.4481891667481788,
+     "crisis": 0.2775
+    },
+    "Random": {
+     "reward": -0.04066708656250001,
+     "pct_oracle": -18.070753286722837,
+     "normalised": 0.0,
+     "normalised_sd": 0.0,
+     "crisis": 2.05
+    },
+    "Oracle": {
+     "reward": 0.22504367093750002,
+     "pct_oracle": 100.0,
+     "normalised": 100.0,
+     "normalised_sd": 0.0,
+     "crisis": 0.16249999999999998
+    },
+    "_floor_reward": -0.04066708656250001
+   }
+  ]
+ },
+ "_budget": {
+  "seeds": 10,
+  "n_users": 50,
+  "steps_per_user": 160,
+  "evaluation_from_step": 80,
+  "methods": [
+   "CNN",
+   "NEWS2",
+   "RLHF",
+   "QMDP",
+   "TriMedAI",
+   "Random"
+  ]
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "profiles": [
+  "visually impaired",
+  "hearing impaired",
+  "mobility impaired",
+  "cognitively impaired"
+ ],
+ "seeds": 5,
+ "n_users": 300,
+ "steps_per_user": 220,
+ "by_threshold": {
+  "escalate at 3": {
+   "visually impaired": 0.7863636363636364,
+   "hearing impaired": 0.7909090909090909,
+   "mobility impaired": 2.3706060606060606,
+   "cognitively impaired": 3.3230303030303032
+  },
+  "escalate at 2": {
+   "visually impaired": 0.0,
+   "hearing impaired": 0.0,
+   "mobility impaired": 0.0,
+   "cognitively impaired": 0.0
+  },
+  "never escalate": {
+   "visually impaired": 3.6533333333333333,
+   "hearing impaired": 3.6560606060606062,
+   "mobility impaired": 6.5184848484848485,
+   "cognitively impaired": 7.9
+  }
+ }
+}

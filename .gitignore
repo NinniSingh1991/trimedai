@@ -1,0 +1,16 @@
+# The corpus is downloaded by src/get_har.py on first run. It is 60 MB and is
+# not ours to redistribute, so it is never committed.
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
