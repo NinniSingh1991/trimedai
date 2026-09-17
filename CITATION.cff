@@ -1,0 +1,78 @@
+cff-version: 1.2.0
+title: "TriMedAI: code and results"
+message: >-
+  The article this repository accompanies is under review and not yet
+  published. Please cite the article rather than the repository once it
+  appears; the entry under preferred-citation gives its details.
+type: software
+license: MIT
+repository-code: "https://github.com/NinniSingh1991/trimedai"
+abstract: >-
+  Simulator, agents, comparators and analysis code for a hidden-parameter
+  Markov decision process that decides when an assistive system should summon
+  a caregiver. Activity context is recognised from the UCI Human Activity
+  Recognition corpus under a subject-wise split; the care process above it is
+  simulated, so nothing here is evidence about clinical performance.
+keywords:
+  - assistive technology
+  - cooperative inverse reinforcement learning
+  - reinforcement learning
+  - meta-learning
+  - hidden-parameter Markov decision process
+  - escalation timing
+  - simulation study
+authors:
+  - given-names: Ninni
+    family-names: Singh
+    orcid: "https://orcid.org/0000-0002-0267-1444"
+    affiliation: >-
+      Computer Science and Engineering Department, Madan Mohan Malaviya
+      University of Technology, Gorakhpur, Uttar Pradesh, India
+  - given-names: Vinit Kumar
+    family-names: Gunjan
+    orcid: "https://orcid.org/0000-0002-3222-4186"
+    affiliation: >-
+      Department of Computer Science and Engineering, CMR Institute of
+      Technology, Hyderabad, Telangana, India
+  - given-names: Sanjay
+    family-names: Kumar
+    orcid: "https://orcid.org/0000-0002-0922-6474"
+    affiliation: >-
+      Computer Science and Engineering Department, Madan Mohan Malaviya
+      University of Technology, Gorakhpur, Uttar Pradesh, India
+  - given-names: Raj
+    family-names: Kumar
+    orcid: "https://orcid.org/0000-0003-2792-6535"
+    affiliation: >-
+      Computer Science and Engineering Department, Madan Mohan Malaviya
+      University of Technology, Gorakhpur, Uttar Pradesh, India
+  - given-names: Manish Kumar
+    family-names: Gupta
+    orcid: "https://orcid.org/0000-0002-5847-9283"
+    affiliation: >-
+      Computer Science and Engineering Department, Madan Mohan Malaviya
+      University of Technology, Gorakhpur, Uttar Pradesh, India
+preferred-citation:
+  type: article
+  status: submitted
+  title: >-
+    TriMedAI: personalising the timing of caregiver escalation in assistive
+    care from wearable activity signals. A simulation study
+  journal: "Expert Systems with Applications"
+  year: 2026
+  authors:
+    - given-names: Ninni
+      family-names: Singh
+      orcid: "https://orcid.org/0000-0002-0267-1444"
+    - given-names: Vinit Kumar
+      family-names: Gunjan
+      orcid: "https://orcid.org/0000-0002-3222-4186"
+    - given-names: Sanjay
+      family-names: Kumar
+      orcid: "https://orcid.org/0000-0002-0922-6474"
+    - given-names: Raj
+      family-names: Kumar
+      orcid: "https://orcid.org/0000-0003-2792-6535"
+    - given-names: Manish Kumar
+      family-names: Gupta
+      orcid: "https://orcid.org/0000-0002-5847-9283"

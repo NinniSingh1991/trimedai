@@ -6,6 +6,19 @@ in assistive care from wearable activity signals. A simulation study*.
 Everything reported in the article is produced by this repository. One command
 regenerates every number, table and figure in it.
 
+## Status
+
+The article is **under review** at *Expert Systems with Applications* and has not
+yet been published. The code and the result files here are the version under
+review: every number in `results/` is one the article reports, and every figure in
+`figures/` is one it prints. Anything that changes during review will be committed
+here, so the history records what was reviewed and what followed.
+
+If you use any part of this repository, please cite the article once it appears.
+`CITATION.cff` carries the details, and GitHub renders it as a **Cite this
+repository** link at the top of this page. The code is MIT licensed, so reuse is
+free provided the copyright notice travels with it.
+
 ## What this is, and what it is not
 
 An assistive-care agent that infers a **continuous** model of the person it is
