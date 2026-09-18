@@ -62,7 +62,8 @@ preferred-citation:
   type: article
   status: submitted
   title: >-
-    TriMedAI: personalising the timing of caregiver escalation in assistive
+    TriMedAI, a framework for personalising the timing of caregiver
+    escalation in assistive
     care from wearable activity signals. A simulation study
   journal: "Expert Systems with Applications"
   year: 2026

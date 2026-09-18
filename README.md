@@ -1,7 +1,7 @@
 # TriMedAI
 
-Code and results for *TriMedAI: personalising the timing of caregiver escalation
-in assistive care from wearable activity signals. A simulation study*.
+Code and results for *TriMedAI, a framework for personalising the timing of caregiver
+escalation in assistive care from wearable activity signals. A simulation study*.
 
 Everything reported in the article is produced by this repository. One command
 regenerates every number, table and figure in it.
