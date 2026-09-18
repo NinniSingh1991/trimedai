@@ -34,6 +34,12 @@ authors:
     affiliation: >-
       Department of Computer Science and Engineering, CMR Institute of
       Technology, Hyderabad, Telangana, India
+  - given-names: Sanjay
+    family-names: Kumar
+    orcid: "https://orcid.org/0000-0002-0922-6474"
+    affiliation: >-
+      Computer Science and Engineering Department, Madan Mohan Malaviya
+      University of Technology, Gorakhpur, Uttar Pradesh, India
   - given-names: Raj
     family-names: Kumar
     orcid: "https://orcid.org/0000-0003-2792-6535"
@@ -43,12 +49,6 @@ authors:
   - given-names: Manish Kumar
     family-names: Gupta
     orcid: "https://orcid.org/0000-0002-5847-9283"
-    affiliation: >-
-      Computer Science and Engineering Department, Madan Mohan Malaviya
-      University of Technology, Gorakhpur, Uttar Pradesh, India
-  - given-names: Sanjay
-    family-names: Kumar
-    orcid: "https://orcid.org/0000-0002-0922-6474"
     affiliation: >-
       Computer Science and Engineering Department, Madan Mohan Malaviya
       University of Technology, Gorakhpur, Uttar Pradesh, India
@@ -74,15 +74,15 @@ preferred-citation:
     - given-names: Vinit Kumar
       family-names: Gunjan
       orcid: "https://orcid.org/0000-0002-3222-4186"
+    - given-names: Sanjay
+      family-names: Kumar
+      orcid: "https://orcid.org/0000-0002-0922-6474"
     - given-names: Raj
       family-names: Kumar
       orcid: "https://orcid.org/0000-0003-2792-6535"
     - given-names: Manish Kumar
       family-names: Gupta
       orcid: "https://orcid.org/0000-0002-5847-9283"
-    - given-names: Sanjay
-      family-names: Kumar
-      orcid: "https://orcid.org/0000-0002-0922-6474"
     - given-names: Rakesh
       family-names: Kumar
       orcid: "https://orcid.org/0000-0001-6362-4476"
