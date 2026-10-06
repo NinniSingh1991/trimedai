@@ -312,8 +312,9 @@ def frontier():
     az.set_title("The corner the useful methods occupy", fontsize=8.6)
     az.set_xlim(7.2, 10.9)
     az.set_ylim(-0.07, 0.78)
-    ax.legend(fontsize=6.1, loc="upper right", framealpha=0.94)
-    fig.tight_layout()
+    h, l = ax.get_legend_handles_labels()
+    fig.tight_layout(rect=(0, 0.13, 1, 1))
+    fig.legend(h, l, fontsize=6.4, loc="lower center", ncol=4, frameon=False)
     fig.savefig(os.path.join(FIGURES, "r03_frontier.png"))
     plt.close(fig)
     print("wrote r03_frontier.png")
@@ -335,18 +336,19 @@ def value_burden():
     for k in ("RLHF", "MCDM", "CNN", "PosteriorSampling", "QMDP"):
         ax.scatter([M(k, "alerts_per_100")], [NORM(k)], s=42, color=COL[k],
                    label=LAB[k], zorder=5)
-    gap = NORM("TriMedAI") - NORM("NEWS2")
-    ax.annotate("", xy=(F["Fixed threshold"]["alerts"], NORM("TriMedAI")),
-                xytext=(F["Fixed threshold"]["alerts"], NORM("NEWS2")),
+    top = F["points"]["0.9"]["TriMedAI"]["norm"]
+    bot = F["Fixed threshold"]["norm"]
+    gap = round(top, 1) - round(bot, 1)
+    ax.annotate("", xy=(F["Fixed threshold"]["alerts"], top),
+                xytext=(F["Fixed threshold"]["alerts"], bot),
                 arrowprops=dict(arrowstyle="<->", color=RED, lw=1.1))
-    ax.text(F["Fixed threshold"]["alerts"] - 0.15,
-            0.5 * (NORM("TriMedAI") + NORM("NEWS2")),
+    ax.text(F["Fixed threshold"]["alerts"] - 0.15, 0.5 * (top + bot),
             "%.1f points" % gap, color=RED, fontsize=7, ha="right", va="center")
     ax.axhline(100, color="black", ls=":", lw=0.9)
     ax.set_xlabel("Caregiver call-outs per 100 interactions")
     ax.set_ylabel("Normalised score (floor 0, reference 100)")
     ax.set_title("Value delivered against the same burden", fontsize=8.6)
-    ax.legend(fontsize=6.3, loc="lower left", framealpha=0.94)
+    ax.legend(fontsize=6.3, loc="upper left", framealpha=0.94)
     fig.savefig(os.path.join(FIGURES, "r04_value.png"))
     plt.close(fig)
     print("wrote r04_value.png")
@@ -362,7 +364,7 @@ def regret_onboarding():
     a1.set_yticklabels([LAB[k] for k in order], fontsize=7)
     a1.set_xlabel("Regret per 100 interactions (primary endpoint)")
     for i, v in enumerate(reg):
-        a1.annotate("%.2f" % v, (v, i), va="center", ha="left", fontsize=7,
+        a1.annotate("%.3f" % v, (v, i), va="center", ha="left", fontsize=7,
                     xytext=(3, 0), textcoords="offset points")
     a1.set_xlim(0, max(reg) * 1.22)
 
@@ -374,7 +376,7 @@ def regret_onboarding():
            label="without")
     for i, r in enumerate(rows):
         if r["p_crisis"] < 0.01:
-            a2.annotate("p < 0.01",
+            a2.annotate("p < 0.001" if r["p_crisis"] < 0.001 else "p < 0.01",
                         (i, max(r["crisis_with"], r["crisis_without"])),
                         ha="center", va="bottom", fontsize=6.2)
     a2.set_xticks(xw)
@@ -437,8 +439,8 @@ def robustness():
     b1.bar(xp + 0.2, [nz("out_of_family", m) for m in meths], 0.4, color="#8ea9c1",
            label="population never given")
     b1.set_xticks(xp)
-    b1.set_xticklabels([LAB[m].replace(" + ", "\n+ ").replace(" (", "\n(")
-                        for m in meths], fontsize=6.4)
+    b1.set_xticklabels(["CNN +\npopulation\nrule", "Fixed-\nthreshold\nrule", "RLHF\n(pooled)",
+                        "QMDP", "TriMedAI\n(proposed)"], fontsize=6.4)
     b1.set_ylabel("Normalised score")
     b1.set_ylim(0, 112)
     b1.legend(fontsize=6.6, loc="lower right")
@@ -451,12 +453,13 @@ def robustness():
     b2.bar(xp2 + 0.2, rout, 0.4, color=RED, label="population never given")
     for i in range(2):
         d = 100 * (rout[i] / rin[i] - 1)
-        b2.annotate("%+.0f%%" % d, (i + 0.2, rout[i]), ha="center", va="bottom",
+        b2.annotate("%+.1f%%" % d, (i + 0.2, rout[i]), ha="center", va="bottom",
                     fontsize=7)
     b2.set_xticks(xp2)
     b2.set_xticklabels(["QMDP", "TriMedAI"], fontsize=7.5)
     b2.set_ylabel("Regret per 100 interactions")
-    b2.legend(fontsize=6.6, loc="upper left")
+    b2.set_ylim(0, max(rin + rout) * 1.45)
+    b2.legend(fontsize=6.6, loc="upper right")
     b2.set_title("The cost of being wrong about the person", fontsize=8.2)
     fig.tight_layout()
     fig.savefig(os.path.join(FIGURES, "r08_robustness.png"))
@@ -489,7 +492,7 @@ def thresholds():
     ax.set_ylabel("Severity at which a caregiver is summoned")
     ax.set_yticks(range(N_SEV))
     ax.set_yticklabels(["0", "1", "2", "3", "never"])
-    ax.legend(fontsize=6.2, ncol=2, loc="upper center")
+    ax.legend(fontsize=6.4, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.2), frameon=False)
     fig.savefig(os.path.join(FIGURES, "r10_thresholds.png"))
     plt.close(fig)
     print("wrote r10_thresholds.png")
@@ -586,7 +589,7 @@ def ablation():
     a3.barh(yb, bvals, xerr=berrs, color=bcols, height=0.6,
             error_kw=dict(lw=0.8, capsize=2))
     for i, (v, ad) in enumerate(zip(bvals, badapt)):
-        a3.annotate("%.0f interactions to settle" % ad, (v, i), va="center",
+        a3.annotate("%.1f interactions to settle" % ad, (v, i), va="center",
                     ha="right", fontsize=6.4, color="white",
                     xytext=(-4, 0), textcoords="offset points")
     a3.set_yticks(yb)
@@ -604,10 +607,10 @@ def ablation():
 
 # ========================================================== misspecification ==
 SHORT = {"product / Boltzmann / constant relief (the agent's model class)":
-         "the agent's own\nmodel class",
-         "proportional-hazard deterioration": "deterioration not\nof product form",
-         "epsilon-greedy stated preference": "preference not\nBoltzmann",
-         "graded caregiver relief": "relief after an alert\nnot constant",
+         "agent's own\nmodel class",
+         "proportional-hazard deterioration": "deterioration\nnot product\nform",
+         "epsilon-greedy stated preference": "preference\nnot\nBoltzmann",
+         "graded caregiver relief": "relief after\nalert not\nconstant",
          "all three together": "all three\ntogether"}
 
 
@@ -619,7 +622,7 @@ def misspec():
     lab = {"Fixed threshold": "Fixed-threshold rule", "QMDP": "QMDP",
            "TriMedAI": "TriMedAI (proposed)"}
 
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(8.4, 3.4))
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.0, 3.6))
     xp = np.arange(len(worlds))
     w = 0.26
     for k, m in enumerate(meths):
@@ -669,11 +672,11 @@ def noise():
              [M["noise"][k]["TriMedAI"]["frailty_error"] for k, _ in got]
         a1.plot(xs, ys, marker=mk[i], ms=3.4, lw=1.3, label=label)
         a2.plot(xs, fe, marker=mk[i], ms=3.4, lw=1.3, label=label)
-    a1.set_xlabel("Error rate on the deterioration signal, or spread of the u(x) error")
+    a1.set_xlabel("Signal error rate, or spread of the u(x) error")
     a1.set_ylabel("Normalised score", fontsize=8)
     a1.axhline(100, color="black", ls="--", lw=0.9)
     a1.legend(fontsize=6.4, loc="lower left")
-    a2.set_xlabel("Error rate on the deterioration signal, or spread of the u(x) error")
+    a2.set_xlabel("Signal error rate, or spread of the u(x) error")
     a2.set_ylabel("Error in the recovered frailty", fontsize=8)
     a2.legend(fontsize=6.4, loc="upper left")
     fig.tight_layout()
