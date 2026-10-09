@@ -34,8 +34,7 @@ authors:
     affiliation: >-
       Department of Computer Science and Engineering, CMR Institute of
       Technology, Hyderabad, Telangana, India
-  - given-names: Raj
-    family-names: Kumar
+  - family-names: Rajkumar
     orcid: "https://orcid.org/0000-0003-2792-6535"
     affiliation: >-
       Computer Science and Engineering Department, Madan Mohan Malaviya
@@ -74,8 +73,7 @@ preferred-citation:
     - given-names: Vinit Kumar
       family-names: Gunjan
       orcid: "https://orcid.org/0000-0002-3222-4186"
-    - given-names: Raj
-      family-names: Kumar
+    - family-names: Rajkumar
       orcid: "https://orcid.org/0000-0003-2792-6535"
     - given-names: Sanjay
       family-names: Kumar
