@@ -9,10 +9,10 @@ license: MIT
 repository-code: "https://github.com/NinniSingh1991/trimedai"
 abstract: >-
   Simulator, agents, comparators and analysis code for a hidden-parameter
-  Markov decision process that decides when an assistive system should summon
-  a caregiver. Activity context is recognised from the UCI Human Activity
-  Recognition corpus under a subject-wise split; the care process above it is
-  simulated, so nothing here is evidence about clinical performance.
+  Markov decision process that decides when an assistive system should alert
+  a caregiver. Activity context is recognised from wearable recordings (UCI HAR,
+  HAR70+, HARTH and KU-HAR); the care process above it is simulated, so nothing
+  here is evidence about clinical performance.
 keywords:
   - assistive technology
   - cooperative inverse reinforcement learning

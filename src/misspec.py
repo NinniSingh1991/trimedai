@@ -1,14 +1,12 @@
 """Misspecification of the model class, and noise on the deterioration signal.
 
-The robustness experiment of the first submission varied the *value* of the
-latent: users were drawn from profiles the agent had never been given, but the
-functional form of the environment was the one the agent assumes. A reviewer
-observed, correctly, that this never makes the model class wrong, so the
-evaluation was close to self-referential. This script closes that gap in two
-ways.
+Drawing users from latent settings the agent was never given varies the *value* of
+the latent, but the functional form of the environment stays the one the agent
+assumes, so the model class is never wrong. This script makes the model class
+wrong in two ways (section 5.4, Table 6, Table S8, Figures 6, S6 and S7).
 
 Form-level misspecification. Three properties of the simulator that the agent's
-model of equations (14), (17) and (21) asserts are replaced by properties it
+model of equations (7), (10) and (14) asserts are replaced by properties it
 cannot express, one at a time and then together:
 
     product          p_theta(x) = phi_theta * u(x)          (what the agent assumes)
@@ -22,9 +20,9 @@ The proportional-hazard form is calibrated so that the population-mean
 probability of deterioration matches the product form, so what changes is the
 shape of the dependence and not the overall difficulty of the task.
 
-Observation noise. The deterioration flag w of equation (22) is what makes
+Observation noise. The deterioration flag w of equation (15) is what makes
 frailty identifiable and therefore what sets the escalation threshold, and the
-first submission assumed it arrived without error. Three one-at-a-time sweeps
+agent's model assumes it arrives without error. Three one-at-a-time sweeps
 relax that: the flag is missed with probability fnr, raised spuriously with
 probability fpr, and the context urgency u(x) the agent plans with is perturbed
 away from the true one.
@@ -55,7 +53,7 @@ from triage_agents import ParticleBelief, PlanningPolicy
 import perception as PC
 
 N_ACT, N_REQ = len(ACTIONS), len(REQUESTS)
-SEEDS = list(range(int(os.environ.get("N_SEEDS", "10"))))
+SEEDS = list(range(int(os.environ.get("N_SEEDS", "30"))))
 N_USERS = int(os.environ.get("N_USERS", "40"))
 T_STEPS, EVAL_FROM = 200, 100
 _URG_TRUE = np.array([URGENCY[r] for r in range(N_REQ)])

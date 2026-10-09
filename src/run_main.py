@@ -1,9 +1,13 @@
-"""Main experiment: every comparator, every metric, thirty seeds.
+"""Main comparison, ablation and backup-rule ablation, including "TriMedAI + safety backstop": the framework unchanged,
+except that a caregiver is always called once the severity reaches the band at which the fixed-threshold rule
+escalates (NEWS2_URGENT_REVIEW). It is simulated LAST in every seed, so every other method sees exactly the
+random numbers whether or not the backstop variant is run. Results go to results/har_results.json.
+
+Every comparator, every metric, thirty seeds.
 
 Contexts are recognised from real wearable recordings; the care process is
-simulated with a severity scale aligned to NEWS2. Reported quantities include the
-clinical endpoints by which an early-warning system is judged, namely the
-sensitivity and specificity of the escalation decision and the number of
+simulated with a severity scale whose bands correspond to those of NEWS2. Reported quantities include
+escalation agreement with the reference policy (its sensitivity and specificity) and the number of
 caregiver call-outs bought per deterioration averted, alongside the reward,
 regret and adaptation measures.
 """
@@ -35,7 +39,7 @@ N_ACT, N_REQ = len(ACTIONS), len(REQUESTS)
 
 METHODS = ["RNN", "LSTM", "CNN", "GAI", "MCDM", "NEWS2", "RLHF", "Bandit",
            "QMDP", "PosteriorSampling", "TriMedAI", "ProfileKnown",
-           "Random", "PerUserQ"]
+           "Random", "PerUserQ", "TriMedAI + safety backstop"]
 # Random is the floor policy every normalised score is anchored on.
 # PerUserQ is a per-user tabular Q-learner, the sequential counterpart to
 # the per-user bandit.
@@ -107,7 +111,7 @@ def run_seed(seed, backbones, yte, oracle_pi, oracle_Q, meta_Q, glob_Q, pop_R,
     stats_ = {m: blank() for m in METHODS + ["Oracle"] + VARIANTS + BACKUPS}
 
     def simulate(key, mode, backbone="CNN", use_belief=False, use_plan=False,
-                 use_meta=False, use_q=False, backup=None):
+                 use_meta=False, use_q=False, backup=None, backstop=False):
         st = stats_[key]
         pred = backbones[backbone]["pred"] if backbone else None
         t0 = time.perf_counter()
@@ -178,6 +182,8 @@ def run_seed(seed, backbones, yte, oracle_pi, oracle_Q, meta_Q, glob_Q, pop_R,
                     a = int(np.argmax(v))
                 elif use_plan or mode == "profileknown" or backup is not None:
                     a = pol.act(s_p)
+                    if backstop and sev >= NEWS2_URGENT_REVIEW:
+                        a = ALERT                        # safety backstop: never later than the threshold rule
                 elif use_q:
                     a = pol.act(s_p, eps=0.15 * max(0.0, 1.0 - t / EVAL_FROM))
                 else:                                    # meta only, frozen
@@ -281,6 +287,9 @@ def run_seed(seed, backbones, yte, oracle_pi, oracle_Q, meta_Q, glob_Q, pop_R,
              use_meta=True, backup=CellBackupPolicy)
     simulate("Single-action Q-learning", "backup", use_belief=True,
              use_meta=True, backup=ObservedQPolicy)
+    simulate("TriMedAI + safety backstop", "framework", use_belief=True, use_plan=True, use_meta=True,
+             backstop=True)                              # last, so no other method's random numbers change
+
     stats_["Model solve (full value iteration)"] = stats_["TriMedAI"]
 
     ms = {k: backbones[k]["infer_ms"] for k in backbones}
@@ -356,7 +365,7 @@ def main():
     orc = float(np.mean(res["oracle"]["reward_per_step"]))
 
     # Floor-anchored normalisation. Mean reward has an arbitrary origin, so a
-    # plain ratio to the oracle is not invariant: adding a constant to eq. (19)
+    # plain ratio to the oracle is not invariant: adding a constant to eq. (12)
     # changes every such ratio while changing no ordering. The score below
     # measures the fraction of the floor-to-oracle span a method closes and is
     # unchanged by any constant shift of the reward.
@@ -397,7 +406,7 @@ def main():
                            "W_crisis": float(wc), "p_crisis": float(pc),
                            "mean_crisis_difference": float(np.mean(ca - cb))}
 
-    json.dump(res, open(os.path.join(RESULTS, "har_results.json"), "w"), indent=1)
+    json.dump(res, open(os.path.join(os.path.dirname(RESULTS), "results", "har_results.json"), "w"), indent=1)
 
     print("\n%-19s %8s %8s %15s %7s %7s %7s %7s %7s %7s"
           % ("method", "reward", "norm", "95% CI (norm)", "regret", "crisis",
@@ -446,7 +455,7 @@ def main():
                                   "delta_adapt": float(
                                       np.mean(res["backups"][BACKUPS[0]]["steps_to_adapt"])
                                       - np.mean(res["backups"][v]["steps_to_adapt"]))}
-    json.dump(res, open(os.path.join(RESULTS, "har_results.json"), "w"), indent=1)
+    json.dump(res, open(os.path.join(os.path.dirname(RESULTS), "results", "har_results.json"), "w"), indent=1)
 
     fe = res["main"]["TriMedAI"].get("frailty_error")
     if fe:

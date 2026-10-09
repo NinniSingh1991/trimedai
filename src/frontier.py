@@ -3,7 +3,7 @@
 With the reference policy computed for the criterion actually reported -- the
 undiscounted mean reward per interaction -- the reference no longer allows the
 same rate of deterioration as the framework. It allows less, and it buys that by
-summoning a caregiver more often. The two are at different points on the same
+alerting a caregiver more often. The two are at different points on the same
 curve, and the thing that decides which point is the planning discount: a policy
 that discounts the future at 0.90 weights a deterioration several interactions
 away less heavily than one that barely discounts at all.
@@ -38,7 +38,7 @@ from triage_agents import ParticleBelief, PlanningPolicy, meta_initialisation
 import perception as PC
 
 N_ACT, N_REQ = len(ACTIONS), len(REQUESTS)
-SEEDS = list(range(int(os.environ.get("N_SEEDS", "15"))))
+SEEDS = list(range(int(os.environ.get("N_SEEDS", "30"))))
 N_USERS = int(os.environ.get("N_USERS", "60"))
 T_STEPS, EVAL_FROM = 200, 100
 GAMMAS = [0.70, 0.80, 0.90, 0.95, 0.98, 0.995]

@@ -1,23 +1,25 @@
-"""Every figure in the article, drawn from the result files.
+"""Every figure in the article and the Supplementary Material, drawn from the result files.
 
-    python make_figures.py              # all twelve
+    python make_figures.py              # all of them
     python make_figures.py frontier     # one of them, by function name
 
-Figure 1   the framework, and the order of events within one interaction
-Figure 2   the same ordering in detail, and what a fixed threshold costs
-Figure 3   harm against caregiver burden, as the planning discount varies
-Figure 4   value delivered against the same burden
-Figure 5   the contribution of each stage, and of the backup rule
-Figure 6   regret, and the window in which the initialisation acts
-Figure 7   normalised score on each latent setting
-Figure 8   behaviour when the person is not one of the settings given
-Figure 9   learning curves, with the dispersion across seeds
-Figure 10  the severity at which a caregiver is summoned, by context
-Figure 11  when the simulator leaves the agent's model class
-Figure 12  error in the deterioration signal, and in the assumed urgency
+File (function)                          Article
+r01_architecture.png (architecture)      Figure 1   the framework and the order of events within one interaction
+r02_timing.png (timing)                  Figure 2   order of events; deteriorations under fixed escalation thresholds
+r09_curves.png (curves)                  Figure 3   learning curves with the dispersion across seeds
+r10_thresholds.png (thresholds)          Figure 4   severity at which a caregiver is alerted, by context
+r03_frontier.png (frontier)              Figure 5   deteriorations against call-outs, with the safety backstop
+fig06_robustness.png (robustness_main)   Figure 6   misspecified functional forms and deterioration-report noise
+r04_value.png (value_burden)             Figure S1  normalised score against call-outs
+r05_ablation.png (ablation)              Figure S2  ablation variants and backup rules
+r06_regret_onboarding.png                Figure S3  regret, and deteriorations by onboarding window
+r07_dispersion.png (dispersion)          Figure S4  normalised score on each latent setting
+r08_robustness.png (robustness)          Figure S5  named against held-out settings
+r11_misspec.png (misspec)                Figure S6  score and regret under each functional form
+r12_noise.png (noise)                    Figure S7  score and frailty error under signal noise
 
-Every panel uses the floor-anchored score of equation (39), and every reference
-quantity is the average-reward optimal policy of triage_env.solve_average.
+Every score is the floor-anchored score of equation (22); every reference quantity comes from the average-reward
+optimal policy of triage_env.solve_average.
 """
 import json, os, sys
 import numpy as np
@@ -44,7 +46,7 @@ def L(name):
     return json.load(open(os.path.join(RESULTS, name), encoding="utf-8"))
 
 
-R = L("har_results.json")
+R = json.load(open(os.path.join(os.path.dirname(RESULTS), "results", "har_results.json"), encoding="utf-8"))  # all methods + backstop
 F = L("har_frontier.json")
 E = L("har_extended.json")
 O = L("har_onboarding.json")
@@ -60,16 +62,23 @@ def NORM(k):
 
 LAB = {"CNN": "CNN + population rule", "LSTM": "LSTM + population rule",
        "RNN": "RNN + population rule", "MCDM": "Multi-criteria rule",
-       "NEWS2": "Fixed-threshold rule", "RLHF": "RLHF (pooled)",
+       "NEWS2": "Fixed-threshold rule", "RLHF": "Pooled-feedback policy",
        "QMDP": "QMDP", "TriMedAI": "TriMedAI (proposed)",
        "PosteriorSampling": "Posterior sampling", "Bandit": "Per-user bandit",
        "PerUserQ": "Per-user Q-learning", "GAI": "Generative baseline",
-       "Random": "Floor (random)", "ProfileKnown": "TriMedAI, latent given"}
+       "Random": "Floor (random)", "ProfileKnown": "TriMedAI, latent given",
+       "TriMedAI + safety backstop": "TriMedAI + safety backstop"}
 COL = {"TriMedAI": NAVY, "QMDP": BLUE, "NEWS2": PURPLE, "RLHF": RED,
        "MCDM": GOLD, "CNN": GREEN, "LSTM": "#78a353", "RNN": "#9dc37e",
        "PosteriorSampling": "#2e75b6", "Bandit": "#a6a6a6",
        "PerUserQ": "#808080", "GAI": "#d9d9d9", "Random": "#404040",
-       "ProfileKnown": "#7ea6cc"}
+       "ProfileKnown": "#7ea6cc", "TriMedAI + safety backstop": "#c55a11"}
+
+
+SET = {"visually impaired": "Setting A", "hearing impaired": "Setting B",
+       "mobility impaired": "Setting C", "cognitively impaired": "Setting D",
+       "mixed sensory (held out)": "Setting E", "severely frail (held out)": "Setting F",
+       "haptic dominant (held out)": "Setting G"}
 
 
 TITLE_FS, BODY_FS = 8.6, 6.6
@@ -78,7 +87,7 @@ PAD_TOP, PAD_BOT = 4.6, 1.8
 
 
 def architecture():
-    """One figure in place of the four the first submission used.
+    """Figure 1: the three stages, the two signals that revise the posterior, and the order of events.
 
     Box heights are computed from the number of lines they hold, so nothing
     overflows; every line is kept short enough to sit inside its box at the body
@@ -141,20 +150,20 @@ def architecture():
     top2 = 40
     box(0.5, top2, 30, "Stage 1   Reward inference",
         ["particle filter over the continuous",
-         "latent, 256 particles, eq. (20)",
-         "preference likelihood, eq. (21)",
-         "deterioration likelihood, eq. (22)",
+         "latent, 256 particles, eq. (13)",
+         "preference likelihood, eq. (14)",
+         "deterioration likelihood, eq. (15)",
          "returns the posterior over the latent"])
     box(34, top2, 31, "Stage 2   Recommendation",
-        ["builds the belief-implied model, eq. (23)",
-         "solves it by value iteration, eq. (24)-(25)",
+        ["forms the planning latent, eq. (16)",
+         "solves its model by value iteration, eq. (17)",
          "warm-started, re-solved every 10 steps",
          "plans at the 0.75 frailty quantile,",
          "which errs on the cautious side"])
     box(68.5, top2, 31, "Stage 3   Adaptation",
         ["latents drawn from the agent's prior,",
          "each solved exactly, then averaged by",
-         "the first-order outer step, eq. (8)-(9)",
+         "the first-order outer step, eq. (19)-(20)",
          "computed offline, before deployment;",
          "serves the user until the posterior forms"])
 
@@ -164,19 +173,19 @@ def architecture():
             fontsize=6.4, color=PURPLE, zorder=5)
     arrow((36, b2), (18, 40.2))
     arrow((58, b3), (24, 40.2), rad=0.10)
-    ax.text(31.5, 44.6, "recognised context", fontsize=6.4, color="#333333")
-    ax.text(31.5, 42.2, "stated channel, deterioration flag", fontsize=6.4,
+    ax.text(6.0, 44.0, "recognised context", fontsize=6.4, color="#333333")
+    ax.text(56.5, 41.4, "stated channel, deterioration flag", fontsize=6.4,
             color="#333333")
 
     # ---- row 3: the order of events within one interaction -----------------
-    box(0.5, 14.5, 99, "Order of events within one interaction, eq. (15) to (17)",
+    box(0.5, 14.5, 99, "Order of events within one interaction, eq. (8) to (10)",
         ["1.  the condition develops first: severity rises by one with probability "
          "frailty x context urgency",
-         "2.  the chosen action takes effect afterwards, so a caregiver summoned "
+         "2.  the chosen action takes effect afterwards, so a caregiver alerted "
          "late cannot avert a deterioration already under way",
-         "3.  the reward of eq. (19) is received, the two signals are observed, "
+         "3.  the reward of eq. (12) is received, the two signals are observed, "
          "the belief is revised and the policy re-solved when due",
-         "the value of summoning a caregiver is therefore carried entirely by the "
+         "the value of alerting a caregiver is therefore carried entirely by the "
          "severity the person is left in"],
         fc="#eef6ee", ec=GREEN)
     for x in (15, 49, 84):
@@ -210,13 +219,13 @@ def timing():
 
     box(0.5, 30, 47, 14, "1.  the condition develops",
         ["severity rises by one with", "probability frailty × urgency,",
-         "eq. (14)–(15); this happens first"], "#fdecea", RED)
+         "eq. (7)–(8); this happens first"], "#fdecea", RED)
     box(52.5, 30, 47, 14, "2.  the action takes effect",
-        ["a caregiver summoned now has", "still to travel, so a deterioration",
+        ["a caregiver alerted now has", "still to travel, so a deterioration",
          "already under way is not averted"], "#eaf1fa", NAVY)
     box(0.5, 13, 47, 14, "3.  reward and observations",
-        ["reward eq. (19); the stated channel", "and the deterioration flag are",
-         "observed, eq. (21)–(22)"], "#eef6ee", GREEN)
+        ["reward eq. (12); the stated channel", "and the deterioration flag are",
+         "observed, eq. (14)–(15)"], "#eef6ee", GREEN)
     box(52.5, 13, 47, 14, "4.  belief and policy",
         ["every action at the visited state is", "backed up from the inferred model,",
          "not only the action taken"], "#f7f0fa", PURPLE)
@@ -226,30 +235,26 @@ def timing():
             ha="center", fontsize=6.9, style="italic", color="#444444")
 
     ax2 = fig.add_subplot(gs[1])
-    names = [p.replace(" impaired", "") for p in CORE_NAMES]
+    names = ["%s\n(frailty %.2f)" % (SET[p], PROFILES[p]["frailty"]) for p in CORE_NAMES]
     xp = np.arange(len(names))
     # computed once and written out, so that the figure and the sentence in
     # section 3.4.1 that quotes these rates read from the same source
-    store = {"profiles": list(CORE_NAMES), "seeds": 5, "n_users": 300,
-             "steps_per_user": 220, "by_threshold": {}}
-    for k, (lab, col, key) in enumerate((("escalate at 3", RED, 3),
-                                         ("escalate at 2", GOLD, 2),
-                                         ("never escalate", GREY, 9))):
-        vals = _fixed_threshold_crises(key)
-        store["by_threshold"][lab] = dict(zip(CORE_NAMES, vals))
+    store = L("har_thresholds.json")                   # 30 seeds, written by thresholds30.py
+    assert store["seeds"] == 30, store["seeds"]
+    for k, (lab, col) in enumerate((("escalate at 3", RED), ("escalate at 2", GOLD),
+                                    ("never escalate", GREY))):
+        vals = [store["by_threshold"][lab][p] for p in CORE_NAMES]
         ax2.bar(xp + (k - 1) * 0.26, vals, 0.26, color=col, label=lab)
         for xi, v in zip(xp, vals):
             if v < 0.05:
                 ax2.annotate("0.00", (xi + (k - 1) * 0.26, 0.04),
                              ha="center", va="bottom", fontsize=6.0,
                              color=col, rotation=90)
-    json.dump(store, open(os.path.join(RESULTS, "har_thresholds.json"), "w"),
-              indent=1)
     ax2.set_xticks(xp)
-    ax2.set_xticklabels([n.replace(" ", "\n") for n in names], fontsize=6.6)
+    ax2.set_xticklabels(names, fontsize=6.6)
     ax2.set_ylabel("Deteriorations per 100 interactions", fontsize=7.6)
     ax2.legend(fontsize=6.4, loc="upper left")
-    ax2.set_title("What a fixed escalation threshold costs", fontsize=8.2)
+    ax2.set_title("Deteriorations under fixed escalation thresholds", fontsize=8.2)
     fig.savefig(os.path.join(FIGURES, "r02_timing.png"))
     plt.close(fig)
     print("wrote r02_timing.png")
@@ -280,7 +285,7 @@ def _fixed_threshold_crises(threshold, seeds=5, users=300, steps=220):
     return out
 
 
-# ------------------------------------- Figure 3, harm against burden --------
+# ------------------------------------- Figure 5, deteriorations against call-outs
 def frontier():
     """Two panels: the whole plane, and the corner every good method occupies."""
     fig, (ax, az) = plt.subplots(1, 2, figsize=(8.4, 3.7))
@@ -296,7 +301,8 @@ def frontier():
             if (zoom and g < 0.9) or (not zoom and g > 0.9):
                 continue
             a.annotate("γ = %g" % g, (x, y), fontsize=6.3, color=NAVY,
-                       xytext=(4, 4), textcoords="offset points")
+                       xytext=((-34, -9) if g > 0.99 else (-38, 2) if g > 0.97 else (4, 4)),
+                       textcoords="offset points")
         a.scatter([F["Oracle"]["alerts"]], [F["Oracle"]["crisis"]], marker="*",
                   s=190, color="black", zorder=7, label="Reference policy")
         a.scatter([F["Fixed threshold"]["alerts"]],
@@ -305,11 +311,14 @@ def frontier():
         for k in others:
             a.scatter([M(k, "alerts_per_100")], [M(k, "crisis_per_100")], s=42,
                       color=COL[k], label=LAB[k], zorder=5)
+        bk = "TriMedAI + safety backstop"
+        a.scatter([M(bk, "alerts_per_100")], [M(bk, "crisis_per_100")], marker="D",
+                  s=60, color=COL[bk], edgecolor="black", lw=0.6, zorder=8, label=LAB[bk])
         a.axhline(F["Oracle"]["crisis"], color="black", ls=":", lw=0.9)
         a.set_xlabel("Caregiver call-outs per 100 interactions", fontsize=8)
     ax.set_ylabel("Deteriorations per 100 interactions", fontsize=8)
-    ax.set_title("Every method evaluated", fontsize=8.6)
-    az.set_title("The corner the useful methods occupy", fontsize=8.6)
+    ax.set_title("All methods", fontsize=8.6)
+    az.set_title("Detail near the reference policy", fontsize=8.6)
     az.set_xlim(7.2, 10.9)
     az.set_ylim(-0.07, 0.78)
     h, l = ax.get_legend_handles_labels()
@@ -320,7 +329,7 @@ def frontier():
     print("wrote r03_frontier.png")
 
 
-# ------------------------------- Figure 4, value against the same burden ----
+# ------------------------------- Figure S1, score against call-outs -------
 def value_burden():
     fig, ax = plt.subplots(figsize=(6.0, 3.8))
     gammas = F["gammas"]
@@ -338,23 +347,23 @@ def value_burden():
                    label=LAB[k], zorder=5)
     top = F["points"]["0.9"]["TriMedAI"]["norm"]
     bot = F["Fixed threshold"]["norm"]
-    gap = round(top, 1) - round(bot, 1)
+    gap = top - bot
     ax.annotate("", xy=(F["Fixed threshold"]["alerts"], top),
                 xytext=(F["Fixed threshold"]["alerts"], bot),
                 arrowprops=dict(arrowstyle="<->", color=RED, lw=1.1))
     ax.text(F["Fixed threshold"]["alerts"] - 0.15, 0.5 * (top + bot),
-            "%.1f points" % gap, color=RED, fontsize=7, ha="right", va="center")
+            "%.2f points" % gap, color=RED, fontsize=7, ha="right", va="center")
     ax.axhline(100, color="black", ls=":", lw=0.9)
     ax.set_xlabel("Caregiver call-outs per 100 interactions")
     ax.set_ylabel("Normalised score (floor 0, reference 100)")
-    ax.set_title("Value delivered against the same burden", fontsize=8.6)
+    ax.set_title("Normalised score against caregiver call-outs", fontsize=8.6)
     ax.legend(fontsize=6.3, loc="upper left", framealpha=0.94)
     fig.savefig(os.path.join(FIGURES, "r04_value.png"))
     plt.close(fig)
     print("wrote r04_value.png")
 
 
-# ---------------------------- Figure 6, regret and the onboarding window ----
+# ---------------------------- Figure S3, regret and the onboarding window --
 def regret_onboarding():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(8.0, 3.2))
     order = ["CNN", "MCDM", "RLHF", "NEWS2", "QMDP", "TriMedAI"]
@@ -384,14 +393,14 @@ def regret_onboarding():
     a2.set_xlabel("Interaction window")
     a2.set_ylabel("Deteriorations per 100 interactions", fontsize=7.6)
     a2.legend(fontsize=6.5, loc="upper right")
-    a2.set_title("The stage acts during onboarding and nowhere else", fontsize=8.2)
+    a2.set_title("Deteriorations by onboarding window", fontsize=8.2)
     fig.tight_layout()
     fig.savefig(os.path.join(FIGURES, "r06_regret_onboarding.png"))
     plt.close(fig)
     print("wrote r06_regret_onboarding.png")
 
 
-# ------------------------------- Figure 7, score on each latent setting -----
+# ------------------------------- Figure S4, score on each latent setting ----
 def dispersion():
     core, held = E["core_profiles"], E["held_out_profiles"]
 
@@ -411,20 +420,20 @@ def dispersion():
             ax.bar(xp + (k - 2) * w, [nz(tag, m, p) for p in pool], w,
                    color=COL[m], label=LAB[m] if tag == "in_family" else None)
         ax.set_xticks(xp)
-        ax.set_xticklabels(["%s\n(frailty %.2f)"
-                            % (p.replace(" (held out)", "").replace(" impaired", ""),
-                               E["frailty"][p]) for p in pool], fontsize=6.4)
+        ax.set_xticklabels(["%s\n(frailty %.2f)" % (SET[p], E["frailty"][p]) for p in pool],
+                           fontsize=6.4)
         ax.set_title(title, fontsize=8.4)
         ax.set_ylim(0, 112)
         ax.axhline(100, color="black", ls="--", lw=0.9)
-    axes[0].set_ylabel("Normalised score against that setting's own reference")
-    axes[0].legend(fontsize=6.3, loc="lower left", ncol=3)
+    axes[0].set_ylabel("Normalised score (own reference)")
+    h, l = axes[0].get_legend_handles_labels()
+    fig.legend(h, l, fontsize=6.6, loc="lower center", ncol=5, frameon=False, bbox_to_anchor=(0.5, -0.06))
     fig.savefig(os.path.join(FIGURES, "r07_dispersion.png"))
     plt.close(fig)
     print("wrote r07_dispersion.png")
 
 
-# -------------------------- Figure 8, a person outside the hypothesis set ---
+# -------------------------- Figure S5, named against held-out settings ------
 def robustness():
     def nz(tag, m):
         fl = E[tag]["Random"]["all"]["reward"]
@@ -439,7 +448,7 @@ def robustness():
     b1.bar(xp + 0.2, [nz("out_of_family", m) for m in meths], 0.4, color="#8ea9c1",
            label="population never given")
     b1.set_xticks(xp)
-    b1.set_xticklabels(["CNN +\npopulation\nrule", "Fixed-\nthreshold\nrule", "RLHF\n(pooled)",
+    b1.set_xticklabels(["CNN +\npopulation\nrule", "Fixed-\nthreshold\nrule", "Pooled-\nfeedback\npolicy",
                         "QMDP", "TriMedAI\n(proposed)"], fontsize=6.4)
     b1.set_ylabel("Normalised score")
     b1.set_ylim(0, 112)
@@ -460,14 +469,14 @@ def robustness():
     b2.set_ylabel("Regret per 100 interactions")
     b2.set_ylim(0, max(rin + rout) * 1.45)
     b2.legend(fontsize=6.6, loc="upper right")
-    b2.set_title("The cost of being wrong about the person", fontsize=8.2)
+    b2.set_title("Regret on named and held-out settings", fontsize=8.2)
     fig.tight_layout()
     fig.savefig(os.path.join(FIGURES, "r08_robustness.png"))
     plt.close(fig)
     print("wrote r08_robustness.png")
 
 
-# ------------------------------------- Figure 10, escalation thresholds -----
+# ------------------------------------- Figure 4, escalation thresholds ------
 def thresholds():
     def thr(pi, rq):
         got = [s for s in range(CRISIS) if pi[sid(rq, s)] == ALERT]
@@ -477,19 +486,19 @@ def thresholds():
     fig, ax = plt.subplots(figsize=(6.6, 3.4))
     w = 0.8 / (len(CORE_NAMES) + 2)
     xp = np.arange(len(REQUESTS))
+    setcol = ["#9dc3e6", "#2e75b6", "#1f4e79", "#0b2540"]
     for k, p in enumerate(CORE_NAMES):
         pi = solve_average(p)[0]
         ax.bar(xp + (k - 2) * w, [thr(pi, r) for r in range(len(REQUESTS))], w,
-               label="%s (frailty %.2f)" % (p.replace(" impaired", ""),
-                                            PROFILES[p]["frailty"]))
+               color=setcol[k], label="%s (frailty %.2f)" % (SET[p], PROFILES[p]["frailty"]))
     ax.bar(xp + 2 * w, [thr(n2, r) for r in range(len(REQUESTS))], w,
            color=PURPLE, label="fixed-threshold rule")
     ax.bar(xp + 3 * w, [thr(myopic_policy(CORE_NAMES[3]), r)
                         for r in range(len(REQUESTS))], w,
-           color=RED, label="immediate-value rule")
+           color="#bfbfbf", hatch="//", edgecolor="#7f7f7f", label="immediate-value rule")
     ax.set_xticks(xp + 0.5 * w)
     ax.set_xticklabels([r.replace(" ", "\n") for r in REQUESTS], fontsize=7)
-    ax.set_ylabel("Severity at which a caregiver is summoned")
+    ax.set_ylabel("Severity at which a caregiver is alerted")
     ax.set_yticks(range(N_SEV))
     ax.set_yticklabels(["0", "1", "2", "3", "never"])
     ax.legend(fontsize=6.4, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.2), frameon=False)
@@ -512,7 +521,7 @@ def curves():
              "RNN": dict(color="#9dc37e", lw=1.0)}
     lab = {"TriMedAI": "TriMedAI (proposed)",
            "NEWS2": "Fixed-threshold escalation rule",
-           "RLHF": "Pooled-feedback policy (RLHF)",
+           "RLHF": "Pooled-feedback policy",
            "MCDM": "Multi-criteria rule",
            "CNN": "CNN + population rule",
            "LSTM": "LSTM + population rule",
@@ -551,7 +560,7 @@ def curves():
 
 # =============================================================== ablation ====
 def ablation():
-    R = L("har_results.json")
+    R = json.load(open(os.path.join(os.path.dirname(RESULTS), "results", "har_results.json"), encoding="utf-8"))  # all methods + backstop
     nz = R["normalised"]
     variants = [v for v in R["ablation"]]
     vals = [nz[v]["mean"] for v in variants]
@@ -578,7 +587,7 @@ def ablation():
     a1.set_xlabel("Normalised score")
     a1.set_xlim(0, 108)
     a1.axvline(100, color="black", ls="--", lw=0.9)
-    a1.set_title("Which stage carries the result", fontsize=8.4)
+    a1.set_title("Normalised score of each ablation variant", fontsize=8.4)
     a2.barh(yp, [cris[i] for i in order], color=cols, height=0.64)
     a2.set_yticks(yp)
     a2.set_yticklabels([])
@@ -597,7 +606,7 @@ def ablation():
     a3.set_xlabel("Normalised score")
     a3.set_xlim(0, 108)
     a3.axvline(100, color="black", ls="--", lw=0.9)
-    a3.set_title("What one interaction may revise\n"
+    a3.set_title("Normalised score by backup rule\n"
                  "(belief and initialisation held fixed)", fontsize=8.4)
     fig.savefig(os.path.join(FIGURES, "r05_ablation.png"))
     plt.close(fig)
@@ -638,9 +647,9 @@ def misspec():
     a1.axhline(100, color="black", ls="--", lw=0.9)
     a1.set_ylim(0, 112)
     a1.legend(fontsize=6.6, loc="lower left")
-    a1.set_title("The true environment leaves the agent's model class",
+    a1.set_title("Normalised score under each functional form",
                  fontsize=8.4)
-    a2.set_title("What being wrong about the form costs", fontsize=8.4)
+    a2.set_title("Regret under each functional form", fontsize=8.4)
     fig.tight_layout()
     fig.savefig(os.path.join(FIGURES, "r11_misspec.png"))
     plt.close(fig)
@@ -685,10 +694,48 @@ def noise():
     print("wrote r12_noise.png")
 
 
+def robustness_main():
+    """Figure 6: score under misspecified forms and under missed / spurious deterioration reports."""
+    M_ = L("har_misspec.json")
+    meths = ["Fixed threshold", "QMDP", "TriMedAI"]
+    cols = {"Fixed threshold": PURPLE, "QMDP": "#ed7d31", "TriMedAI": NAVY}
+    lab = {"Fixed threshold": "Fixed-threshold rule", "QMDP": "QMDP", "TriMedAI": "TriMedAI (proposed)"}
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.0, 3.5), gridspec_kw={"width_ratios": [1.25, 1.0]})
+    worlds = list(M_["form"]); xp = np.arange(len(worlds)); w = 0.26
+    for k, m in enumerate(meths):
+        a1.bar(xp + (k - 1) * w, [M_["form"][d][m]["norm"] for d in worlds], w,
+               yerr=[M_["form"][d][m]["norm_sd"] for d in worlds], color=cols[m], label=lab[m],
+               error_kw=dict(lw=0.7, capsize=2))
+    a1.set_xticks(xp); a1.set_xticklabels([SHORT.get(d, d) for d in worlds], fontsize=6.4)
+    a1.set_ylabel("Normalised score", fontsize=8); a1.set_ylim(60, 104)
+    a1.axhline(100, color="black", ls="--", lw=0.9)
+    a1.set_title("Functional form of the simulator", fontsize=8.4)
+    a1.legend(fontsize=6.4, loc="lower left")
+    base = M_["form"]["product / Boltzmann / constant relief (the agent's model class)"]
+    keys = list(M_["noise"])
+    for pref, ls, nm in (("missed deterioration reports (fnr)", "-", "missed reports"),
+                         ("spurious deterioration reports (fpr)", "--", "spurious reports")):
+        got = sorted([(k, float(k.split("=")[-1].split(",")[0])) for k in keys if k.startswith(pref)],
+                     key=lambda kv: kv[1])
+        got = [(k, v) for k, v in got if v > 0]
+        xs = [0.0] + [v for _, v in got]
+        for m in ("QMDP", "TriMedAI"):
+            ys = [base[m]["norm"]] + [M_["noise"][k][m]["norm"] for k, _ in got]
+            a2.plot(xs, ys, ls=ls, marker="o", ms=3.2, lw=1.4, color=cols[m], label="%s, %s" % (lab[m], nm))
+    a2.axhline(base["Fixed threshold"]["norm"], color=PURPLE, lw=1.2, label="Fixed-threshold rule (unaffected)")
+    a2.set_xlabel("Error rate of the deterioration report"); a2.set_ylabel("Normalised score", fontsize=8)
+    a2.set_ylim(60, 104); a2.axhline(100, color="black", ls="--", lw=0.9)
+    a2.set_title("Noise in the deterioration report", fontsize=8.4)
+    a2.legend(fontsize=6.0, loc="lower left")
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIGURES, "fig06_robustness.png"))
+    plt.close(fig)
+    print("wrote fig06_robustness.png")
+
 
 ORDER = ["architecture", "timing", "frontier", "value_burden", "ablation",
          "regret_onboarding", "dispersion", "robustness", "curves",
-         "thresholds", "misspec", "noise"]
+         "thresholds", "misspec", "noise", "robustness_main"]
 
 
 if __name__ == "__main__":

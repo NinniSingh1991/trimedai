@@ -5,15 +5,15 @@
   "mobility impaired",
   "cognitively impaired"
  ],
- "seeds": 5,
+ "seeds": 30,
  "n_users": 300,
  "steps_per_user": 220,
  "by_threshold": {
   "escalate at 3": {
-   "visually impaired": 0.7863636363636364,
-   "hearing impaired": 0.7909090909090909,
-   "mobility impaired": 2.3706060606060606,
-   "cognitively impaired": 3.3230303030303032
+   "visually impaired": 0.7796464646464647,
+   "hearing impaired": 0.7798989898989899,
+   "mobility impaired": 2.3704040404040403,
+   "cognitively impaired": 3.3427272727272728
   },
   "escalate at 2": {
    "visually impaired": 0.0,
@@ -22,10 +22,10 @@
    "cognitively impaired": 0.0
   },
   "never escalate": {
-   "visually impaired": 3.6533333333333333,
-   "hearing impaired": 3.6560606060606062,
-   "mobility impaired": 6.5184848484848485,
-   "cognitively impaired": 7.9
+   "visually impaired": 3.643686868686869,
+   "hearing impaired": 3.6458585858585857,
+   "mobility impaired": 6.536111111111111,
+   "cognitively impaired": 7.914444444444444
   }
  }
 }

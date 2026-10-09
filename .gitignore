@@ -14,3 +14,7 @@ venv/
 .idea/
 .DS_Store
 Thumbs.db
+
+# HAR70+, HARTH and KU-HAR are downloaded by src/get_external.py on first run (about 520 MB).
+# They are published by their authors and are never committed.
+external/

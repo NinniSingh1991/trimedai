@@ -1,0 +1,123 @@
+{
+ "machine": {
+  "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+  "python": "3.12.10",
+  "logical_cores": 14
+ },
+ "single_process": {
+  "1": {
+   "rounds": 2000,
+   "decisions": 2000,
+   "decision_ms_mean": 0.1326761986128986,
+   "decision_ms_median": 0.05759997293353081,
+   "decision_ms_p95": 0.7392400177195668,
+   "decision_ms_p99": 0.8429110143333673,
+   "decision_ms_max": 1.6354001127183437,
+   "recognition_ms_per_window": 0.15831000008620322,
+   "round_seconds_decisions_only": 0.0001326761986128986,
+   "round_seconds_end_to_end_estimate": 0.0002909861986991018,
+   "memory_kb_per_user": 17.40625,
+   "users_in_real_time_per_process": 8797
+  },
+  "10": {
+   "rounds": 300,
+   "decisions": 3000,
+   "decision_ms_mean": 0.12932956110065183,
+   "decision_ms_median": 0.05559995770454407,
+   "decision_ms_p95": 0.7254051510244608,
+   "decision_ms_p99": 0.7900039618834852,
+   "decision_ms_max": 1.7475001513957977,
+   "recognition_ms_per_window": 0.11874360009096563,
+   "round_seconds_decisions_only": 0.0012932956110065182,
+   "round_seconds_end_to_end_estimate": 0.0024807316119161748,
+   "memory_kb_per_user": 17.40625,
+   "users_in_real_time_per_process": 10319
+  },
+  "100": {
+   "rounds": 60,
+   "decisions": 6000,
+   "decision_ms_mean": 0.1371166604415824,
+   "decision_ms_median": 0.05759997293353081,
+   "decision_ms_p95": 0.7324000122025609,
+   "decision_ms_p99": 0.8295016782358289,
+   "decision_ms_max": 1.925299409776926,
+   "recognition_ms_per_window": 0.09676199988462031,
+   "round_seconds_decisions_only": 0.01371166604415824,
+   "round_seconds_end_to_end_estimate": 0.023387866032620275,
+   "memory_kb_per_user": 17.40625,
+   "users_in_real_time_per_process": 10945
+  },
+  "1000": {
+   "rounds": 20,
+   "decisions": 20000,
+   "decision_ms_mean": 0.1431163783185184,
+   "decision_ms_median": 0.058900099247694016,
+   "decision_ms_p95": 0.7446995237842202,
+   "decision_ms_p99": 0.8825038513168686,
+   "decision_ms_max": 2.75049963966012,
+   "recognition_ms_per_window": 0.10909183323383331,
+   "round_seconds_decisions_only": 0.1431163783185184,
+   "round_seconds_end_to_end_estimate": 0.25220821155235174,
+   "memory_kb_per_user": 17.40625,
+   "users_in_real_time_per_process": 10150
+  },
+  "10000": {
+   "rounds": 10,
+   "decisions": 100000,
+   "decision_ms_mean": 0.14668892117682844,
+   "decision_ms_median": 0.059800222516059875,
+   "decision_ms_p95": 0.7460997439920902,
+   "decision_ms_p99": 0.8579013589769596,
+   "decision_ms_max": 3.3831000328063965,
+   "recognition_ms_per_window": 0.11501169667268793,
+   "round_seconds_decisions_only": 1.4668892117682844,
+   "round_seconds_end_to_end_estimate": 2.6170061784951635,
+   "memory_kb_per_user": 17.40625,
+   "users_in_real_time_per_process": 9782
+  }
+ },
+ "multi_process": {
+  "1": {
+   "users": 1000,
+   "rounds": 20,
+   "decisions": 20000,
+   "wall_seconds_incl_start": 3.438674499746412,
+   "decisions_per_second": 6269.339344555765
+  },
+  "2": {
+   "users": 1000,
+   "rounds": 20,
+   "decisions": 20000,
+   "wall_seconds_incl_start": 1.8896420001983643,
+   "decisions_per_second": 12215.330128799806
+  },
+  "4": {
+   "users": 1000,
+   "rounds": 20,
+   "decisions": 20000,
+   "wall_seconds_incl_start": 1.474562400020659,
+   "decisions_per_second": 17117.374266777468
+  },
+  "8": {
+   "users": 1000,
+   "rounds": 20,
+   "decisions": 20000,
+   "wall_seconds_incl_start": 1.2113410998135805,
+   "decisions_per_second": 24942.308442637546
+  },
+  "12": {
+   "users": 1000,
+   "rounds": 20,
+   "decisions": 19920,
+   "wall_seconds_incl_start": 1.1439539999701083,
+   "decisions_per_second": 32621.960604842607
+  }
+ },
+ "recognition_ms_per_window": {
+  "1": 0.15831000008620322,
+  "10": 0.11874360009096563,
+  "100": 0.09676199988462031,
+  "1000": 0.10909183323383331,
+  "10000": 0.11501169667268793
+ }
+}

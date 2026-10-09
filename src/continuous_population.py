@@ -1,9 +1,9 @@
 """Personalisation on a continuum, rather than among four named profiles.
 
-A reviewer observed that although the framework describes a continuous latent,
-the population in the main experiment is generated from four named profiles, so
-what the experiment shows could be interpolation among a small synthetic set
-rather than personalisation over a continuum.
+The framework describes a continuous latent, but the population of the main
+experiment is generated from four named profiles, so that experiment alone could
+show interpolation among a small synthetic set rather than personalisation over a
+continuum (section 5.4, Table 6).
 
 This script removes the named profiles from the generative process altogether.
 Each simulated person is drawn independently from the prior the agent carries:
@@ -20,8 +20,7 @@ Three things are measured.
   * how each method's performance depends on the distance from the person's
     latent to the nearest named profile. A method that carries a discrete
     hypothesis set should degrade with that distance and a method that carries a
-    continuous latent should not. That contrast is the evidence the reviewer
-    asked for, and it cannot be produced from a population of four types.
+    continuous latent should not. That contrast is the evidence sought, and it cannot be produced from a population of four types.
 
     python continuous_population.py
     N_SEEDS=3 N_USERS=20 python continuous_population.py
@@ -43,7 +42,7 @@ from triage_agents import (ParticleBelief, PlanningPolicy, meta_initialisation,
 import perception as PC
 
 N_ACT, N_REQ = len(ACTIONS), len(REQUESTS)
-SEEDS = list(range(int(os.environ.get("N_SEEDS", "15"))))
+SEEDS = list(range(int(os.environ.get("N_SEEDS", "30"))))
 N_USERS = int(os.environ.get("N_USERS", "60"))
 T_STEPS, EVAL_FROM = 200, 100
 METHODS = ["Oracle", "Random", "Population rule", "Fixed threshold",
@@ -215,6 +214,14 @@ def main():
                       "regret": float(np.mean(per_seed[m]["regret"])),
                       "regret_sd": float(np.std(per_seed[m]["regret"], ddof=1)),
                       "crisis": float(np.mean(per_seed[m]["crisis"]))}
+        per_seed[m]["norm"] = [float(v) for v in z]
+
+    # paired two-sided Wilcoxon signed-rank tests over seeds, TriMedAI against each comparator
+    tests = {}
+    for m in ("Population rule", "Fixed threshold", "QMDP"):
+        tests[m] = {k: {"mean_difference": float(np.mean(np.subtract(per_seed["TriMedAI"][k], per_seed[m][k]))),
+                        "p": float(stats.wilcoxon(per_seed["TriMedAI"][k], per_seed[m][k]).pvalue)}
+                    for k in ("norm", "regret", "crisis")}
 
     # per-person normalised score, so that performance can be related to how far
     # the person sits from the nearest named profile
@@ -250,6 +257,8 @@ def main():
             "population": "latent drawn independently per person: frailty ~ U(0,1), "
                           "channel weights ~ U(0,1) each; no named profiles",
             "summary": summary,
+            "per_seed": per_seed,
+            "tests_trimedai_minus": tests,
             "distance_tertiles": [float(v) for v in tert],
             "normalised_by_distance_tertile": bands,
             "distance_slope": slopes,

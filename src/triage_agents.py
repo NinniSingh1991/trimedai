@@ -237,7 +237,7 @@ def mcdm_policy(weights=(0.45, 0.35, 0.20)):
 
 
 # ====================================================== policy-update variants
-# Reviewer request: the article claims that backing up every action at a visited
+# Backup-rule ablation (Table 5, panel B): the article claims that backing up every action at a visited
 # state from the belief-implied model is worth several points of attained value
 # and a large reduction in the interactions a new user must spend. That claim
 # needs an ablation that changes the backup rule and nothing else. The three
@@ -245,10 +245,10 @@ def mcdm_policy(weights=(0.45, 0.35, 0.20)):
 # and differ only in what one interaction is allowed to revise.
 
 class RowBackupPolicy:
-    """Equations (23) to (25) taken literally: at the visited state, average the
+    """The belief-averaged full-row backup of Table 5, panel B: at the visited state, average the
     reward and the transition kernel under the belief and back up every action.
 
-    This is the update written in Table 4. It touches one state per interaction,
+    This is the full-row backup of Table 5, panel B. It touches one state per interaction,
     unlike the full model solve used by the framework, so it isolates the
     belief-averaged full-row backup from the value iteration that surrounds it.
     """
@@ -273,7 +273,7 @@ class RowBackupPolicy:
 class CellBackupPolicy(RowBackupPolicy):
     """The same belief-averaged target, applied to the action that was taken and
     to no other. Everything else is identical to RowBackupPolicy, so the
-    difference between the two is the loop over actions in Table 4 line 2."""
+    difference between the two is the loop over actions in the full-row backup."""
 
     def observe(self, belief, state, action=None, reward=None):
         if action is None:

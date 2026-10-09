@@ -25,7 +25,7 @@ from triage_agents import (ParticleBelief, PlanningPolicy, meta_initialisation,
                            global_policy, population_reward_table, mcdm_policy)
 import perception as PC
 
-SEEDS = list(range(int(os.environ.get("N_SEEDS", "20"))))
+SEEDS = list(range(int(os.environ.get("N_SEEDS", "30"))))
 N_USERS, T_STEPS, EVAL_FROM = 60, 200, 100
 N_ACT, N_REQ = len(ACTIONS), len(REQUESTS)
 METHODS = ["CNN", "NEWS2", "RLHF", "QMDP", "TriMedAI", "Random"]

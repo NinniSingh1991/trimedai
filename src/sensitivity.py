@@ -1,8 +1,8 @@
 """Sensitivity of the conclusions to the constants of the care process.
 
 The wearable corpus is real, but the care process above it is simulated and its
-constants were chosen by the authors, so a reader is entitled to ask whether they
-were chosen until the proposed method won. Each constant is swept either side of
+constants were chosen by the authors, so the sweep tests whether the conclusions
+depend on those choices. Each constant is swept either side of
 the value used in the main experiment and the comparison is re-run at every
 setting. What matters is not whether the numbers move, which they will, but
 whether the ordering of the methods survives.
@@ -22,12 +22,14 @@ from triage_agents import (ParticleBelief, PlanningPolicy, meta_initialisation,
                            global_policy, population_reward_table)
 import perception as PC
 
-SEEDS = list(range(int(os.environ.get("N_SEEDS", "5"))))
+SEEDS = list(range(int(os.environ.get("N_SEEDS", "30"))))
 N_USERS = int(os.environ.get("N_USERS", "50"))
 T_STEPS, EVAL_FROM = 160, 80
 N_ACT, N_REQ = len(ACTIONS), len(REQUESTS)
 METHODS = ["CNN", "NEWS2", "RLHF", "QMDP", "TriMedAI", "Random"]
 FLOOR = "Random"
+PRED_BY_SEED = None    # None: one recogniser for all seeds; else {seed: predictions of the recogniser trained with that seed}
+CONTEXT_PROBS = None   # None: contexts uniform, as in every main experiment; else a probability per context
 SHOWN = ["CNN", "NEWS2", "RLHF", "QMDP", "TriMedAI"]   # the floor is not ranked
 
 GRID = [
@@ -71,13 +73,16 @@ def run_setting(backbones, yte):
                  for _ in range(N_USERS)]
         streams = []
         for _ in users:
-            cls = rng.integers(0, N_REQ, size=T_STEPS)
+            cls = (rng.integers(0, N_REQ, size=T_STEPS) if CONTEXT_PROBS is None
+                   else rng.choice(N_REQ, size=T_STEPS, p=CONTEXT_PROBS))
             idx = np.array([rng.choice(by_class[int(c)]) for c in cls])
             streams.append((cls, idx))
 
         for m in METHODS + ["Oracle"]:
             rew, cri, n = [], 0, 0
             pred = backbones["MLP" if m == "RLHF" else "CNN"]["pred"]
+            if PRED_BY_SEED is not None:
+                pred = PRED_BY_SEED[seed]
             for u, (cls, idx) in zip(users, streams):
                 ui = PROFILE_NAMES.index(u)
                 opi = oracle_pi[u]
@@ -131,7 +136,9 @@ def run_setting(backbones, yte):
                   "pct_oracle": 100.0 * float(_np.mean(x)) / orc,
                   "normalised": float(_np.mean(z)),
                   "normalised_sd": float(_np.std(z, ddof=1)) if len(z) > 1 else 0.0,
-                  "crisis": float(_np.mean(got[m]["crisis"]))}
+                  "crisis": float(_np.mean(got[m]["crisis"])),
+                  "normalised_seeds": [float(v) for v in z],
+                  "crisis_seeds": [float(v) for v in got[m]["crisis"]]}
     out["_floor_reward"] = float(_np.mean(f_seed))
     return out
 

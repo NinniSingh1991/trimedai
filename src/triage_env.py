@@ -23,7 +23,7 @@ threshold is used to define the clinical-protocol comparator, so the framework i
 measured against the standard of care and not only against machine-learning
 baselines.
 
-Three properties make each stage of the framework necessary. Summoning a
+Three properties make each stage of the framework necessary. Alerting a
 caregiver costs more on the interaction where it is issued than it returns, and
 repays only through the severity the person is left in. A deterioration event
 carries a large penalty that arrives several interactions after the decisions
@@ -156,7 +156,7 @@ def outcomes(profile, request, severity, action_idx):
     Sampling and the exact solver both read this function, so the simulator and
     the optimal-policy oracle cannot drift apart.
 
-    The condition develops before the chosen action takes effect. A summoned
+    The condition develops before the chosen action takes effect. An alerted
     caregiver has to travel and an assistant that is still speaking has not yet
     helped, so an alert raised at high severity does not avert a deterioration
     already under way; the value of escalating lies in the severity the person is
@@ -491,7 +491,7 @@ if __name__ == "__main__":
     print("\nseverity scale")
     for i, b in enumerate(NEWS2_BANDS):
         print("   %d  %s" % (i, b))
-    print("\nescalation threshold, lowest severity at which a caregiver is summoned\n")
+    print("\nescalation threshold, lowest severity at which a caregiver is alerted\n")
     print("%-24s %8s   %s" % ("profile", "frailty",
                               "  ".join("%-12s" % r[:12] for r in REQUESTS)))
     for name in CORE_NAMES:
@@ -530,7 +530,7 @@ if __name__ == "__main__":
 # The reference below is optimal for the criterion actually reported. Relative
 # value iteration returns the gain g, which is the best attainable mean reward
 # per interaction, together with relative action values whose differences are
-# the value forgone by departing from the optimal policy. Regret of eq. (27) is
+# the value forgone by departing from the optimal policy. Regret of eq. (23) is
 # read off those differences and is unaffected by the arbitrary offset.
 # ---------------------------------------------------------------------------
 def plan_average(R, T, iters=200000, tol=1e-13):
