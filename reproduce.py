@@ -23,18 +23,18 @@ DECISION = [("uci9_main", "uniform"), ("uci9_acc", "uniform"), ("pooled110", "un
 STEPS = [("download the UCI HAR corpus", ["get_har.py"]),
          ("download HAR70+, HARTH and KU-HAR", ["get_external.py"]),
          ("main comparison, ablation, backup rule and safety backstop (Tables 4, 5)", ["run_main.py"]),
-         ("held-out latent settings and per-setting results (Table 6, Table S5)", ["run_extended.py"]),
+         ("held-out latent settings and per-setting results (Table 6, Table S7)", ["run_extended.py"]),
          ("meta-initialisation by onboarding window (Table 5, panel C)", ["onboarding_check.py"]),
          ("learning curves (Figure 3)", ["triage_curves.py"]),
          ("operating curve over the planning discount (Figure 5)", ["frontier.py"]),
          ("fixed-threshold deteriorations (Figure 2)", ["thresholds30.py"])] + \
-        [("sensitivity sweep, constant %d of 6 (Table S6)" % (k + 1), ["run_sweep30.py", str(k)]) for k in range(6)] + \
-        [("misspecification and signal noise (Table 6, Table S8)", ["misspec.py"]),
+        [("sensitivity sweep, constant %d of 6 (Table S5)" % (k + 1), ["run_sweep30.py", str(k)]) for k in range(6)] + \
+        [("misspecification and signal noise (Table 6, Table S6)", ["misspec.py"]),
          ("continuous population (Table 6)", ["continuous_population.py"]),
          ("recognition on older adults, HAR70+ (Table 7)", ["e1_older_adults.py"]),
          ("age-versus-device control, HARTH (Table 7)", ["e1h_harth_control.py"]),
          ("recognition on 110 people, UCI HAR + KU-HAR (Table 7)", ["e4_more_subjects.py"])] + \
-        [("decision layer: %s, %s context mix (Table 7, Table S7)" % c, ["e1d_decision_layer.py", c[0], c[1]]) for c in DECISION] + \
+        [("decision layer: %s, %s context mix (Table 7, Table S8)" % c, ["e1d_decision_layer.py", c[0], c[1]]) for c in DECISION] + \
         [("decision latency under multi-user load (Table 8)", ["e3_latency_load.py"]),
          ("summary of every number (RESULTS_SUMMARY.md)", ["compile_results.py"]),
          ("every figure", ["make_figures.py"])]

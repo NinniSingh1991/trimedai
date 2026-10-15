@@ -10,13 +10,13 @@ r09_curves.png (curves)                  Figure 3   learning curves with the dis
 r10_thresholds.png (thresholds)          Figure 4   severity at which a caregiver is alerted, by context
 r03_frontier.png (frontier)              Figure 5   deteriorations against call-outs, with the safety backstop
 fig06_robustness.png (robustness_main)   Figure 6   misspecified functional forms and deterioration-report noise
-r04_value.png (value_burden)             Figure S1  normalised score against call-outs
-r05_ablation.png (ablation)              Figure S2  ablation variants and backup rules
-r06_regret_onboarding.png                Figure S3  regret, and deteriorations by onboarding window
-r07_dispersion.png (dispersion)          Figure S4  normalised score on each latent setting
-r08_robustness.png (robustness)          Figure S5  named against held-out settings
-r11_misspec.png (misspec)                Figure S6  score and regret under each functional form
-r12_noise.png (noise)                    Figure S7  score and frailty error under signal noise
+r04_value.png (value_burden)             Figure S3  normalised score against call-outs
+r05_ablation.png (ablation)              Figure S1  ablation variants and backup rules
+r06_regret_onboarding.png                Figure S2  regret, and deteriorations by onboarding window
+r07_dispersion.png (dispersion)          Figure S6  normalised score on each latent setting
+r08_robustness.png (robustness)          Figure S7  named against held-out settings
+r11_misspec.png (misspec)                Figure S4  score and regret under each functional form
+r12_noise.png (noise)                    Figure S5  score and frailty error under signal noise
 
 Every score is the floor-anchored score of equation (22); every reference quantity comes from the average-reward
 optimal policy of triage_env.solve_average.
@@ -70,7 +70,7 @@ LAB = {"CNN": "CNN + population rule", "LSTM": "LSTM + population rule",
        "TriMedAI + safety backstop": "TriMedAI + safety backstop"}
 COL = {"TriMedAI": NAVY, "QMDP": BLUE, "NEWS2": PURPLE, "RLHF": RED,
        "MCDM": GOLD, "CNN": GREEN, "LSTM": "#78a353", "RNN": "#9dc37e",
-       "PosteriorSampling": "#2e75b6", "Bandit": "#a6a6a6",
+       "PosteriorSampling": "#17a2a2", "Bandit": "#a6a6a6",
        "PerUserQ": "#808080", "GAI": "#d9d9d9", "Random": "#404040",
        "ProfileKnown": "#7ea6cc", "TriMedAI + safety backstop": "#c55a11"}
 
@@ -329,7 +329,7 @@ def frontier():
     print("wrote r03_frontier.png")
 
 
-# ------------------------------- Figure S1, score against call-outs -------
+# ------------------------------- Figure S3, score against call-outs -------
 def value_burden():
     fig, ax = plt.subplots(figsize=(6.0, 3.8))
     gammas = F["gammas"]
@@ -363,7 +363,7 @@ def value_burden():
     print("wrote r04_value.png")
 
 
-# ---------------------------- Figure S3, regret and the onboarding window --
+# ---------------------------- Figure S2, regret and the onboarding window --
 def regret_onboarding():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(8.0, 3.2))
     order = ["CNN", "MCDM", "RLHF", "NEWS2", "QMDP", "TriMedAI"]
@@ -380,7 +380,7 @@ def regret_onboarding():
     rows = O["rows"]
     xw = np.arange(len(rows))
     a2.bar(xw - 0.2, [r["crisis_with"] for r in rows], 0.4, color=NAVY,
-           label="with meta-initialisation")
+           label="with meta-learned initialisation")
     a2.bar(xw + 0.2, [r["crisis_without"] for r in rows], 0.4, color=RED,
            label="without")
     for i, r in enumerate(rows):
@@ -400,7 +400,7 @@ def regret_onboarding():
     print("wrote r06_regret_onboarding.png")
 
 
-# ------------------------------- Figure S4, score on each latent setting ----
+# ------------------------------- Figure S6, score on each latent setting ----
 def dispersion():
     core, held = E["core_profiles"], E["held_out_profiles"]
 
@@ -433,7 +433,7 @@ def dispersion():
     print("wrote r07_dispersion.png")
 
 
-# -------------------------- Figure S5, named against held-out settings ------
+# -------------------------- Figure S7, named against held-out settings ------
 def robustness():
     def nz(tag, m):
         fl = E[tag]["Random"]["all"]["reward"]

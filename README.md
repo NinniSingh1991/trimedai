@@ -29,19 +29,19 @@ python reproduce.py --quick    # 3 seeds, 20 users, 3 recogniser seeds: a smoke 
 |---|---|---|
 | `get_har.py` | UCI HAR corpus, downloaded and cached in `data/` | Section 4.1 |
 | `get_external.py` | HAR70+, HARTH and KU-HAR, downloaded and unpacked in `external/` | Section 4.1 |
-| `run_main.py` | `har_results.json`: main comparison, stage ablation, backup-rule ablation, safety backstop | Tables 4, 5; Figures S2, S3 |
-| `run_extended.py` | `har_extended.json`: named and held-out latent settings | Table 6; Table S5; Figures S4, S5 |
+| `run_main.py` | `har_results.json`: main comparison, stage ablation, backup-rule ablation, safety backstop | Tables 4, 5; Figures S1, S2 |
+| `run_extended.py` | `har_extended.json`: named and held-out latent settings | Table 6; Table S7; Figures S6, S7 |
 | `onboarding_check.py` | `har_onboarding.json`: effect of the meta-initialisation by window | Table 5, panel C |
 | `triage_curves.py` | `har_curves.json`: learning curves | Figure 3 |
-| `frontier.py` | `har_frontier.json`: operating curve over the planning discount | Figure 5; Figure S1 |
+| `frontier.py` | `har_frontier.json`: operating curve over the planning discount | Figure 5; Figure S3 |
 | `thresholds30.py` | `har_thresholds.json`: deteriorations under fixed escalation thresholds | Figure 2 |
-| `run_sweep30.py` (uses `sensitivity.py`) | `sens30_row0.json` to `sens30_row5.json`: 30-cell sensitivity sweep | Table 6; Table S6 |
-| `misspec.py` | `har_misspec.json`: misspecified simulator and noisy deterioration report | Table 6; Table S8; Figures 6, S6, S7 |
+| `run_sweep30.py` (uses `sensitivity.py`) | `sens30_row0.json` to `sens30_row5.json`: 30-cell sensitivity sweep | Table 6; Table S5 |
+| `misspec.py` | `har_misspec.json`: misspecified simulator and noisy deterioration report | Table 6; Table S6; Figures 6, S4, S5 |
 | `continuous_population.py` | `har_continuous.json`: 1,800 people with continuous latents, with paired tests | Table 6 |
-| `e1_older_adults.py` | `e1_recognition.json`, `e1_predictions.npz`: recognition on HAR70+ | Table 7; Table S4 |
+| `e1_older_adults.py` | `e1_recognition.json`, `e1_predictions.npz`: recognition on HAR70+ | Table 7; Table S3 |
 | `e1h_harth_control.py` | `e1h_harth_control.json`, `e1h_predictions.npz`: age versus device and setting | Table 7 |
 | `e4_more_subjects.py` | `e4_more_subjects.json`, `e4_predictions.npz`: recognition on 110 people | Table 7 |
-| `e1d_decision_layer.py <condition> <mix>` | `e1d_*.json`: decision layer under each recogniser | Table 7; Table S7 |
+| `e1d_decision_layer.py <condition> <mix>` | `e1d_*.json`: decision layer under each recogniser | Table 7; Table S8 |
 | `e3_latency_load.py` | `e3_latency_load.json`: decision latency for 1 to 10,000 users | Table 8 |
 | `compile_results.py` | `RESULTS_SUMMARY.md`: every number, read from the result files | All results |
 | `make_figures.py` | `figures/*.png` | Figures 1 to 6; Figures S1 to S7 |

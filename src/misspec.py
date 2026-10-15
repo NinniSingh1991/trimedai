@@ -3,7 +3,7 @@
 Drawing users from latent settings the agent was never given varies the *value* of
 the latent, but the functional form of the environment stays the one the agent
 assumes, so the model class is never wrong. This script makes the model class
-wrong in two ways (section 5.4, Table 6, Table S8, Figures 6, S6 and S7).
+wrong in two ways (section 5.4, Table 6, Table S6, Figures 6, S4 and S5).
 
 Form-level misspecification. Three properties of the simulator that the agent's
 model of equations (7), (10) and (14) asserts are replaced by properties it
