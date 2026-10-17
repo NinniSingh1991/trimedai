@@ -77,7 +77,8 @@ def summarise(m, backbone_ms):
         needless_alerts_per_100=100.0 * m["needless"] / n,
         oracle_agreement=100.0 * float(np.mean(m["agree"])) if m["agree"] else 0.0,
         steps_to_adapt=float(np.mean(m["adapt"])) if m["adapt"] else float(T_STEPS),
-        delay_ms=1000.0 * m["secs"] / n + backbone_ms,
+        # every simulated interaction is timed (the first 100 of each user as well), so divide by all of them
+        delay_ms=1000.0 * m["secs"] / max(m["users"] * T_STEPS, 1) + backbone_ms,
         regret_per_100=100.0 * float(np.mean(m["regret"])) if m["regret"] else 0.0,
         users_with_crisis=100.0 * m["users_hit"] / max(m["users"], 1),
         escalation_sensitivity=100.0 * sens,
