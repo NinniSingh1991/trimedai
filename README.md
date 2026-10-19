@@ -38,6 +38,8 @@ python reproduce.py --quick    # 3 seeds, 20 users, 3 recogniser seeds: a smoke 
 | `run_sweep30.py` (uses `sensitivity.py`) | `sens30_row0.json` to `sens30_row5.json`: 30-cell sensitivity sweep | Table 6; Table S5 |
 | `misspec.py` | `har_misspec.json`: misspecified simulator and noisy deterioration report | Table 6; Table S6; Figures 6, S4, S5 |
 | `continuous_population.py` | `har_continuous.json`: 1,800 people with continuous latents, with paired tests | Table 6 |
+| `run_main_pqmdp.py` | `har_results_pqmdp.json`: particle QMDP over the posterior, every other method reproduced | Table 5, panel B |
+| `continuous_population_pqmdp.py` | `har_continuous_pqmdp.json`: particle QMDP on the continuous population | Section 5.4 |
 | `e1_older_adults.py` | `e1_recognition.json`, `e1_predictions.npz`: recognition on HAR70+ | Table 7; Table S3 |
 | `e1h_harth_control.py` | `e1h_harth_control.json`, `e1h_predictions.npz`: age versus device and setting | Table 7 |
 | `e4_more_subjects.py` | `e4_more_subjects.json`, `e4_predictions.npz`: recognition on 110 people | Table 7 |

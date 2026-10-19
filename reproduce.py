@@ -31,6 +31,8 @@ STEPS = [("download the UCI HAR corpus", ["get_har.py"]),
         [("sensitivity sweep, constant %d of 6 (Table S5)" % (k + 1), ["run_sweep30.py", str(k)]) for k in range(6)] + \
         [("misspecification and signal noise (Table 6, Table S6)", ["misspec.py"]),
          ("continuous population (Table 6)", ["continuous_population.py"]),
+         ("particle QMDP planning rule (Table 5, panel B)", ["run_main_pqmdp.py"]),
+         ("particle QMDP on the continuous population (section 5.4)", ["continuous_population_pqmdp.py"]),
          ("recognition on older adults, HAR70+ (Table 7)", ["e1_older_adults.py"]),
          ("age-versus-device control, HARTH (Table 7)", ["e1h_harth_control.py"]),
          ("recognition on 110 people, UCI HAR + KU-HAR (Table 7)", ["e4_more_subjects.py"])] + \

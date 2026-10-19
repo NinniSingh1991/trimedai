@@ -136,6 +136,31 @@ class PlanningPolicy:
         self.Q = plan(R, T, sweeps=self.sweeps, Q0=self.Q)
 
 
+
+class ParticleQMDPPolicy:
+    """QMDP over the particle posterior, the comparator that isolates the continuous belief from the way
+    TriMedAI plans with it. At every re-plan it draws n_draw particles from the posterior, solves the model
+    of each one, and acts greedily on their averaged action values; TriMedAI instead solves one model at an
+    upper frailty quantile. Same belief, same initial table and same re-planning interval as TriMedAI."""
+
+    def __init__(self, init=None, replan_every=10, sweeps=60, n_draw=32, rng=None):
+        self.Q = np.zeros((N_STATES, N_ACT)) if init is None else init.copy()
+        self.replan_every, self.sweeps, self.n_draw = replan_every, sweeps, n_draw
+        self.rng = rng or np.random.default_rng(0)
+        self.k = 0
+
+    def act(self, state):
+        return int(np.argmax(self.Q[state]))
+
+    def observe(self, belief, force=False):
+        self.k += 1
+        if not force and self.k % self.replan_every:
+            return
+        idx = self.rng.choice(belief.n, size=self.n_draw, p=belief.weights)
+        Qs = [plan(*model_for(float(belief.frailty[i]), belief.pref[i]), sweeps=self.sweeps, Q0=self.Q)
+              for i in idx]
+        self.Q = np.mean(Qs, axis=0)
+
 class QPolicy:
     """Tabular Q-learning, retained for the ablation variants and the pooled
     comparator that learn without an inferred model."""
